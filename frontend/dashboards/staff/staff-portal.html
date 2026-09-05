@@ -2,20 +2,20 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/x-icon" href="../public/favicon.ico">
+    <link rel="icon" type="image/x-icon" href="../../public/favicon.ico">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Portal - Mbambangwe High School</title>
-    <meta name="description" content="Administration portal for Mbambangwe High School management.">
+    <title>Staff Portal - Mbambangwe High School</title>
+    <meta name="description" content="Staff portal for Mbambangwe High School educators and administrative staff.">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="../assets/css/styles.css">
+    <link rel="stylesheet" href="../../assets/css/styles.css">
     <style>
         .portal-login {
             min-height: 100dvh;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(160deg, #050e1d 0%, #0F172A 50%, #0d1e38 100%);
+            background: linear-gradient(135deg, #0c1a2e 0%, var(--navy) 50%, #0d2137 100%);
             padding: 2rem;
             position: relative;
             overflow: hidden;
@@ -23,30 +23,30 @@
         .portal-login::before {
             content: '';
             position: absolute;
-            top: 20%;
-            right: 10%;
-            width: 300px;
-            height: 300px;
+            top: -30%;
+            left: -10%;
+            width: 500px;
+            height: 500px;
             border-radius: 50%;
-            border: 1px solid rgba(212,175,55,0.1);
+            background: radial-gradient(circle, rgba(212,175,55,0.06) 0%, transparent 70%);
             pointer-events: none;
         }
         .portal-login::after {
             content: '';
             position: absolute;
-            top: 15%;
-            right: 5%;
-            width: 500px;
-            height: 500px;
+            bottom: -20%;
+            right: -5%;
+            width: 400px;
+            height: 400px;
             border-radius: 50%;
-            border: 1px solid rgba(212,175,55,0.05);
+            background: radial-gradient(circle, rgba(212,175,55,0.04) 0%, transparent 70%);
             pointer-events: none;
         }
         .login-card {
             background: rgba(255,255,255,0.97);
             padding: 3rem 3.5rem;
             border-radius: 20px;
-            box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,175,55,0.15);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.08);
             width: 100%;
             max-width: 440px;
             position: relative;
@@ -112,7 +112,6 @@
             transform: translateY(-50%);
             color: var(--gray);
             font-size: 0.9rem;
-            pointer-events: none;
         }
         .input-wrapper input {
             width: 100%;
@@ -168,8 +167,8 @@
         .btn-login {
             width: 100%;
             padding: 1rem;
-            background: linear-gradient(135deg, #b8860b, var(--gold));
-            color: var(--navy);
+            background: linear-gradient(135deg, var(--navy), var(--navy-light));
+            color: white;
             border: none;
             border-radius: 10px;
             font-size: 1rem;
@@ -184,20 +183,19 @@
         }
         .btn-login:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(212,175,55,0.4);
-            filter: brightness(1.05);
+            box-shadow: 0 10px 25px rgba(15,23,42,0.4);
         }
         .security-note {
             margin-top: 1.5rem;
             padding: 0.75rem 1rem;
-            background: #fef9ec;
-            border: 1px solid #fde68a;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
             border-radius: 8px;
             display: flex;
             align-items: center;
             gap: 0.5rem;
             font-size: 0.8rem;
-            color: #92400e;
+            color: #166534;
         }
         .divider {
             text-align: center;
@@ -237,7 +235,7 @@
             display: flex;
             align-items: center;
             gap: 0.4rem;
-            color: rgba(255,255,255,0.7);
+            color: rgba(255,255,255,0.8);
             text-decoration: none;
             font-size: 0.9rem;
             font-weight: 500;
@@ -249,84 +247,83 @@
 </head>
 <body>
     <div class="top-nav-back">
-        <a href="index.html"><i class="fas fa-arrow-left"></i> Back to School Site</a>
+        <a href="../../pages/index.html"><i class="fas fa-arrow-left"></i> Back to School Site</a>
     </div>
 
     <div class="portal-login">
         <div class="login-card">
-            <a href="index.html" class="portal-logo"><img src="../public/logo.png" alt="Mbambangwe High School logo">Mbambangwe<span>High</span></a>
-            <div class="portal-badge"><i class="fas fa-shield-alt"></i> Admin Portal</div>
-            <h2>Administration</h2>
-            <p class="subtitle">Restricted access — authorised administration personnel only.</p>
+            <a href="../../pages/index.html" class="portal-logo"><img src="../../public/logo.png" alt="Mbambangwe High School logo">Mbambangwe<span>High</span></a>
+            <div class="portal-badge"><i class="fas fa-chalkboard-teacher"></i> Staff Portal</div>
+            <h2>Staff Sign In</h2>
+            <p class="subtitle">Access your class registers, reports, and school resources.</p>
 
-            <form id="adminLoginForm">
-                <div class="login-error" id="adminLoginError" role="alert">
+            <form id="staffLoginForm">
+                <div class="login-error" id="staffLoginError" role="alert">
                     <i class="fas fa-circle-exclamation"></i>
-                    <span id="adminLoginErrorText"></span>
+                    <span id="staffLoginErrorText"></span>
                 </div>
                 <div class="form-group">
-                    <label for="adminEmail">Admin Email</label>
+                    <label for="staffEmail">Staff Email</label>
                     <div class="input-wrapper">
                         <i class="fas fa-envelope icon"></i>
-                        <input type="email" id="adminEmail" placeholder="admin@mbambangwehigh.co.za" required autocomplete="email">
+                        <input type="email" id="staffEmail" placeholder="yourname@mbambangwehigh.co.za" required autocomplete="email">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="adminPassword">Password</label>
+                    <label for="staffPassword">Password</label>
                     <div class="input-wrapper">
-                        <i class="fas fa-key icon"></i>
-                        <input type="password" id="adminPassword" placeholder="Enter your secure password" required autocomplete="current-password">
+                        <i class="fas fa-lock icon"></i>
+                        <input type="password" id="staffPassword" placeholder="Enter your password" required autocomplete="current-password">
                         <button type="button" class="pw-toggle" aria-label="Toggle password visibility" onclick="var inp=this.previousElementSibling; inp.type=inp.type==='password'?'text':'password'; this.querySelector('i').classList.toggle('fa-eye'); this.querySelector('i').classList.toggle('fa-eye-slash');"><i class="fas fa-eye"></i></button>
                     </div>
                 </div>
                 <div class="form-options">
-                    <label><input type="checkbox" id="rememberAdmin"> Stay signed in</label>
-                    <a href="contact.html">Reset Password</a>
+                    <label><input type="checkbox" id="rememberStaff"> Stay signed in</label>
+                    <a href="../../pages/contact.html">Reset Password</a>
                 </div>
-                <button type="submit" class="btn-login" id="adminLoginBtn">
-                    <i class="fas fa-sign-in-alt"></i> Access System
+                <button type="submit" class="btn-login" id="staffLoginBtn">
+                    <i class="fas fa-sign-in-alt"></i> Sign In
                 </button>
             </form>
 
             <div class="security-note">
-                <i class="fas fa-exclamation-triangle"></i>
-                <span>Restricted area. Unauthorised access attempts are logged.</span>
+                <i class="fas fa-shield-alt"></i>
+                <span>This portal is for authorised staff only. All sessions are monitored.</span>
             </div>
 
             <div class="divider">or</div>
-            <a href="index.html" class="back-link"><i class="fas fa-home"></i> Return to School Home</a>
+            <a href="../../pages/index.html" class="back-link"><i class="fas fa-home"></i> Return to School Home</a>
         </div>
     </div>
 
-    <script src="../assets/js/auth.js"></script>
+    <script src="../../assets/js/auth.js"></script>
     <script>
-        document.getElementById('adminLoginForm').addEventListener('submit', async function(e) {
+        document.getElementById('staffLoginForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            const btn = document.getElementById('adminLoginBtn');
-            const errorBox = document.getElementById('adminLoginError');
-            const errorText = document.getElementById('adminLoginErrorText');
+            const btn = document.getElementById('staffLoginBtn');
+            const errorBox = document.getElementById('staffLoginError');
+            const errorText = document.getElementById('staffLoginErrorText');
             const originalHTML = btn.innerHTML;
 
             errorBox.style.display = 'none';
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying credentials...';
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Authenticating...';
             btn.disabled = true;
 
             try {
                 await MHSAuth.login({
-                    endpoint: '/api/admin/login',
+                    endpoint: '/api/staff/login',
                     body: {
-                        email: document.getElementById('adminEmail').value,
-                        password: document.getElementById('adminPassword').value
+                        email: document.getElementById('staffEmail').value,
+                        password: document.getElementById('staffPassword').value
                     },
-                    remember: document.getElementById('rememberAdmin').checked,
-                    role: 'admin'
+                    remember: document.getElementById('rememberStaff').checked,
+                    role: 'staff'
                 });
 
                 btn.innerHTML = '<i class="fas fa-check"></i> Success! Redirecting...';
                 btn.style.background = 'linear-gradient(135deg,#10b981,#059669)';
-                btn.style.color = 'white';
                 setTimeout(() => {
-                    window.location.href = 'admin-dashboard.html';
+                    window.location.href = 'staff-dashboard.html';
                 }, 700);
             } catch (err) {
                 errorText.textContent = err.message;

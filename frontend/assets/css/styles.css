@@ -1433,10 +1433,12 @@ img {
     align-items: center;
     padding: 1.25rem 0;
     gap: 0.5rem;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
     height: 100vh;
     flex-shrink: 0;
+    z-index: 100;
 }
 
 .staff-sidebar .sidebar-logo {
@@ -1492,6 +1494,7 @@ img {
 .staff-main {
     flex: 1;
     min-width: 0;
+    margin-left: 72px;
 }
 
 .staff-topbar {
@@ -2591,6 +2594,10 @@ img {
 
     .staff-sidebar {
         width: 56px;
+    }
+
+    .staff-main {
+        margin-left: 56px;
     }
 
     .sidebar-icon {
