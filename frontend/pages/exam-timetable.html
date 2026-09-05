@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="../public/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Timetable - Mbambangwe High School</title>
+    <meta name="description" content="View and download the Mbambangwe High School examination timetable for all grades.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <style>
+        .timetable-hero {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            padding: 6rem 5% 4rem;
+            text-align: center;
+            color: white;
+        }
+        .timetable-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            letter-spacing: -0.025em;
+        }
+        .timetable-hero p {
+            color: rgba(255,255,255,0.75);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        .timetable-hero .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--navy);
+            font-size: 0.8rem;
+            font-weight: 700;
+            padding: 0.35rem 1rem;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+        }
+        .timetable-page {
+            padding: 3rem 5% 5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timetable-controls {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+        .grade-filter {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .grade-btn {
+            padding: 0.5rem 1.25rem;
+            border: 2px solid #e8edf4;
+            background: white;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: var(--gray);
+            font-family: 'Inter', sans-serif;
+        }
+        .grade-btn:hover, .grade-btn.active {
+            border-color: var(--gold);
+            background: var(--gold);
+            color: var(--navy);
+        }
+        .download-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.25rem;
+            background: var(--navy);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s;
+        }
+        .download-btn:hover {
+            background: var(--navy-light);
+            transform: translateY(-1px);
+        }
+        .term-section {
+            margin-bottom: 3rem;
+        }
+        .term-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.25rem;
+        }
+        .term-header h2 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--navy);
+        }
+        .term-badge {
+            padding: 0.25rem 0.75rem;
+            background: var(--light-gray);
+            border-radius: 6px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--gray);
+        }
+        .timetable-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        .timetable-table thead {
+            background: var(--navy);
+            color: white;
+        }
+        .timetable-table thead th {
+            padding: 1rem 1.25rem;
+            text-align: left;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .timetable-table thead th:first-child { border-radius: 0; }
+        .timetable-table tbody tr {
+            border-bottom: 1px solid #f1f5f9;
+            transition: background 0.15s;
+        }
+        .timetable-table tbody tr:hover { background: #f8fafc; }
+        .timetable-table tbody tr:last-child { border-bottom: none; }
+        .timetable-table tbody td {
+            padding: 1rem 1.25rem;
+            font-size: 0.95rem;
+            color: #334155;
+        }
+        .timetable-table .subject-cell {
+            font-weight: 600;
+            color: var(--navy);
+        }
+        .timetable-table .date-cell {
+            color: var(--gold);
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        .timetable-table .time-cell {
+            color: var(--gray);
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+        .grade-badge-cell {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.25rem;
+            background: var(--light-gray);
+            color: var(--navy);
+            font-size: 0.8rem;
+            font-weight: 600;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+        }
+        .duration-cell {
+            color: var(--gray);
+            font-size: 0.85rem;
+        }
+        .important-note {
+            background: #fef9ec;
+            border: 1px solid #fde68a;
+            border-radius: 10px;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+        .important-note i {
+            color: #d97706;
+            font-size: 1.2rem;
+            margin-top: 0.15rem;
+            flex-shrink: 0;
+        }
+        .important-note p {
+            color: #92400e;
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+        .important-note strong { display: block; margin-bottom: 0.25rem; }
+        .table-scroll {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            border-radius: 12px;
+        }
+        @media (max-width: 768px) {
+            .timetable-hero { padding: 5rem 5% 3rem; }
+            .timetable-hero h1 { font-size: 2rem; }
+            .timetable-table { font-size: 0.85rem; min-width: 620px; }
+            .timetable-table thead th, .timetable-table tbody td { padding: 0.75rem 0.75rem; }
+            .timetable-controls { flex-direction: column; align-items: flex-start; }
+            .term-header { flex-wrap: wrap; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="logo"><img src="../public/logo.png" alt="Mbambangwe High School logo" class="logo-img">Mbambangwe<span>High</span></a>
+        <div class="hamburger"><i class="fas fa-bars"></i></div>
+        <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="admissions.html">Admissions</a></li>
+            <li><a href="academics.html">Academics</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="activities.html">Activities</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+    <div class="timetable-hero">
+        <div class="badge"><i class="fas fa-calendar-alt"></i> Academic Year 2025</div>
+        <h1>Exam Timetable</h1>
+        <p>Official examination schedule for all grades. Dates are subject to change - check with your class teacher for updates.</p>
+        <a href="academics.html" class="btn btn-secondary" style="color:white; border-color: rgba(255,255,255,0.5);">
+            <i class="fas fa-arrow-left" style="margin-right:0.5rem;"></i> Back to Academics
+        </a>
+    </div>
+
+    <section class="timetable-page">
+
+        <div class="important-note">
+            <i class="fas fa-info-circle"></i>
+            <p>
+                <strong>Please Note</strong>
+                All examinations begin promptly at the listed time. Students must arrive at least 15 minutes before the exam. A valid student ID is required for entry. Please refer to the school office for any postponement notices.
+            </p>
+        </div>
+
+        <!-- Controls -->
+        <div class="timetable-controls">
+            <div class="grade-filter">
+                <button type="button" class="grade-btn active" onclick="filterGrade('all', this)">All Grades</button>
+                <button type="button" class="grade-btn" onclick="filterGrade('10', this)">Grade 10</button>
+                <button type="button" class="grade-btn" onclick="filterGrade('11', this)">Grade 11</button>
+                <button type="button" class="grade-btn" onclick="filterGrade('12', this)">Grade 12</button>
+            </div>
+            <button type="button" class="download-btn" onclick="alert('PDF download will be available soon. Please contact the office for a printed copy.')">
+                <i class="fas fa-download"></i> Download PDF
+            </button>
+        </div>
+
+        <!-- Term 3 Exams -->
+        <div class="term-section">
+            <div class="term-header">
+                <h2>Term 3 - Mid-Year Examinations</h2>
+                <span class="term-badge">June - July 2025</span>
+            </div>
+            <div class="table-scroll">
+            <table class="timetable-table" id="examTable">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Subject</th>
+                        <th>Grade</th>
+                        <th>Time</th>
+                        <th>Duration</th>
+                        <th>Venue</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-grade="10 11 12">
+                        <td class="date-cell">Mon, 16 Jun</td>
+                        <td class="subject-cell">Mathematics</td>
+                        <td><span class="grade-badge-cell">Gr 10</span> <span class="grade-badge-cell">Gr 11</span> <span class="grade-badge-cell">Gr 12</span></td>
+                        <td class="time-cell">09:00 - 12:00</td>
+                        <td class="duration-cell">3 hrs</td>
+                        <td>Main Hall</td>
+                    </tr>
+                    <tr data-grade="12">
+                        <td class="date-cell">Tue, 17 Jun</td>
+                        <td class="subject-cell">English Home Language - P1</td>
+                        <td><span class="grade-badge-cell">Gr 12</span></td>
+                        <td class="time-cell">09:00 - 11:30</td>
+                        <td class="duration-cell">2.5 hrs</td>
+                        <td>Main Hall</td>
+                    </tr>
+                    <tr data-grade="10 11">
+                        <td class="date-cell">Tue, 17 Jun</td>
+                        <td class="subject-cell">English First Additional Language - P1</td>
+                        <td><span class="grade-badge-cell">Gr 10</span> <span class="grade-badge-cell">Gr 11</span></td>
+                        <td class="time-cell">09:00 - 11:00</td>
+                        <td class="duration-cell">2 hrs</td>
+                        <td>Block B Hall</td>
+                    </tr>
+                    <tr data-grade="10 11 12">
+                        <td class="date-cell">Wed, 18 Jun</td>
+                        <td class="subject-cell">Physical Sciences - P1 (Physics)</td>
+                        <td><span class="grade-badge-cell">Gr 10</span> <span class="grade-badge-cell">Gr 11</span> <span class="grade-badge-cell">Gr 12</span></td>
+                        <td class="time-cell">09:00 - 11:00</td>
+                        <td class="duration-cell">2 hrs</td>
+                        <td>Main Hall</td>
+                    </tr>
+                    <tr data-grade="10 11 12">
+                        <td class="date-cell">Thu, 19 Jun</td>
+                        <td class="subject-cell">Life Sciences - P1</td>
+                        <td><span class="grade-badge-cell">Gr 10</span> <span class="grade-badge-cell">Gr 11</span> <span class="grade-badge-cell">Gr 12</span></td>
+                        <td class="time-cell">09:00 - 11:00</td>
+                        <td class="duration-cell">2 hrs</td>
+                        <td>Main Hall</td>
+                    </tr>
+                    <tr data-grade="10 11 12">
+                        <td class="date-cell">Fri, 20 Jun</td>
+                        <td class="subject-cell">Geography - P1</td>
+                        <td><span class="grade-badge-cell">Gr 10</span> <span class="grade-badge-cell">Gr 11</span> <span class="grade-badge-cell">Gr 12</span></td>
+                        <td class="time-cell">09:00 - 11:00</td>
+                        <td class="duration-cell">2 hrs</td>
+                        <td>Block B Hall</td>
+                    </tr>
+                    <tr data-grade="10 11 12">
+                        <td class="date-cell">Mon, 23 Jun</td>
+                        <td class="subject-cell">History - P1</td>
+                        <td><span class="grade-badge-cell">Gr 10</span> <span class="grade-badge-cell">Gr 11</span> <span class="grade-badge-cell">Gr 12</span></td>
+                        <td class="time-cell">09:00 - 11:00</td>
+                        <td class="duration-cell">2 hrs</td>
+                        <td>Main Hall</td>
+                    </tr>
+                    <tr data-grade="10 11 12">
+                        <td class="date-cell">Tue, 24 Jun</td>
+                        <td class="subject-cell">Accounting</td>
+                        <td><span class="grade-badge-cell">Gr 10</span> <span class="grade-badge-cell">Gr 11</span> <span class="grade-badge-cell">Gr 12</span></td>
+                        <td class="time-cell">09:00 - 11:00</td>
+                        <td class="duration-cell">2 hrs</td>
+                        <td>Block B Hall</td>
+                    </tr>
+                    <tr data-grade="10 11 12">
+                        <td class="date-cell">Wed, 25 Jun</td>
+                        <td class="subject-cell">Business Studies</td>
+                        <td><span class="grade-badge-cell">Gr 10</span> <span class="grade-badge-cell">Gr 11</span> <span class="grade-badge-cell">Gr 12</span></td>
+                        <td class="time-cell">14:00 - 16:00</td>
+                        <td class="duration-cell">2 hrs</td>
+                        <td>Main Hall</td>
+                    </tr>
+                    <tr data-grade="10 11 12">
+                        <td class="date-cell">Thu, 26 Jun</td>
+                        <td class="subject-cell">Life Orientation</td>
+                        <td><span class="grade-badge-cell">Gr 10</span> <span class="grade-badge-cell">Gr 11</span> <span class="grade-badge-cell">Gr 12</span></td>
+                        <td class="time-cell">09:00 - 10:30</td>
+                        <td class="duration-cell">1.5 hrs</td>
+                        <td>Classrooms</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+        <!-- Term 4 Exams -->
+        <div class="term-section">
+            <div class="term-header">
+                <h2>Term 4 - Final Examinations</h2>
+                <span class="term-badge">October - November 2025</span>
+            </div>
+            <div class="table-scroll">
+            <table class="timetable-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Subject</th>
+                        <th>Grade</th>
+                        <th>Time</th>
+                        <th>Duration</th>
+                        <th>Venue</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr data-grade="12">
+                        <td class="date-cell">Mon, 27 Oct</td>
+                        <td class="subject-cell">Mathematics - P1</td>
+                        <td><span class="grade-badge-cell">Gr 12</span></td>
+                        <td class="time-cell">09:00 - 12:00</td>
+                        <td class="duration-cell">3 hrs</td>
+                        <td>Main Hall</td>
+                    </tr>
+                    <tr data-grade="10 11">
+                        <td class="date-cell">Tue, 28 Oct</td>
+                        <td class="subject-cell">Mathematics - P1</td>
+                        <td><span class="grade-badge-cell">Gr 10</span> <span class="grade-badge-cell">Gr 11</span></td>
+                        <td class="time-cell">09:00 - 11:30</td>
+                        <td class="duration-cell">2.5 hrs</td>
+                        <td>Main Hall</td>
+                    </tr>
+                    <tr data-grade="12">
+                        <td class="date-cell">Wed, 29 Oct</td>
+                        <td class="subject-cell">Physical Sciences - P1 (Physics)</td>
+                        <td><span class="grade-badge-cell">Gr 12</span></td>
+                        <td class="time-cell">09:00 - 12:00</td>
+                        <td class="duration-cell">3 hrs</td>
+                        <td>Main Hall</td>
+                    </tr>
+                    <tr data-grade="12">
+                        <td class="date-cell">Fri, 7 Nov</td>
+                        <td class="subject-cell">English Home Language - P1</td>
+                        <td><span class="grade-badge-cell">Gr 12</span></td>
+                        <td class="time-cell">09:00 - 12:00</td>
+                        <td class="duration-cell">3 hrs</td>
+                        <td>Main Hall</td>
+                    </tr>
+                    <tr data-grade="12">
+                        <td class="date-cell">Mon, 10 Nov</td>
+                        <td class="subject-cell">Life Sciences - P1</td>
+                        <td><span class="grade-badge-cell">Gr 12</span></td>
+                        <td class="time-cell">09:00 - 11:00</td>
+                        <td class="duration-cell">2 hrs</td>
+                        <td>Main Hall</td>
+                    </tr>
+                    <tr data-grade="12">
+                        <td class="date-cell">Wed, 12 Nov</td>
+                        <td class="subject-cell">Geography - P1</td>
+                        <td><span class="grade-badge-cell">Gr 12</span></td>
+                        <td class="time-cell">09:00 - 11:00</td>
+                        <td class="duration-cell">2 hrs</td>
+                        <td>Main Hall</td>
+                    </tr>
+                </tbody>
+            </table>
+            </div>
+        </div>
+
+    </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-brand"><img src="../public/logo.png" alt="Mbambangwe High School logo"><h3>Mbambangwe High School</h3></div>
+                <p>Empowering Minds, Building Futures since 1985</p>
+                <div style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9;">
+                    <p><i class="fas fa-map-marker-alt"></i> 10 83915 Track, Amanzimtoti</p>
+                    <p><i class="fas fa-phone"></i> 031 476 0246</p>
+                    <p><i class="fas fa-envelope"></i> mbambangwehigh@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="news.html">News & Events</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Portals</h3>
+                <ul>
+                    <li><a href="student-portal.html">Student Portal</a></li>
+                    <li><a href="parent-portal.html">Parent Portal</a></li>
+                    <li><a href="staff-portal.html">Staff Portal</a></li>
+
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to get updates</p>
+                <form style="margin-top: 1rem;">
+                    <input type="email" placeholder="Your email" style="padding: 0.5rem; width: 100%; margin-bottom: 0.5rem;" required>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Mbambangwe High School. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+    <script>
+        function filterGrade(grade, clickedBtn) {
+            // Update active button
+            document.querySelectorAll('.grade-btn').forEach(b => b.classList.remove('active'));
+            clickedBtn.classList.add('active');
+
+            // Filter rows
+            document.querySelectorAll('.timetable-table tbody tr').forEach(row => {
+                if (grade === 'all') {
+                    row.style.display = '';
+                } else {
+                    const rowGrades = row.getAttribute('data-grade') || '';
+                    row.style.display = rowGrades.includes(grade) ? '' : 'none';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
+
+

@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="../public/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard - Mbambangwe High School</title>
+    <meta name="description" content="Staff dashboard for Mbambangwe High School - manage classes, attendance, results and lesson plans.">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+
+    <div class="staff-shell">
+
+        <!-- Sidebar -->
+        <aside class="staff-sidebar">
+            <img src="../public/logo.png" alt="Mbambangwe High School logo" class="sidebar-logo">
+            <nav class="sidebar-nav">
+                <a href="#" class="sidebar-icon active" title="Dashboard"><i class="fas fa-th-large"></i></a>
+                <a href="#todays-class" class="sidebar-icon" title="Timetable"><i class="fas fa-calendar-alt"></i></a>
+                <a href="#attendance-section" class="sidebar-icon" title="Attendance"><i class="fas fa-clipboard-check"></i></a>
+                <a href="#student-progress" class="sidebar-icon" title="Students"><i class="fas fa-users"></i></a>
+                <a href="academics.html" class="sidebar-icon" title="Classes"><i class="fas fa-chalkboard-teacher"></i></a>
+                <a href="#best-performers" class="sidebar-icon" title="Exams &amp; Results"><i class="fas fa-file-alt"></i></a>
+                <a href="#syllabus-section" class="sidebar-icon" title="Lesson Plans"><i class="fas fa-book-open"></i></a>
+                <a href="#notice-board" class="sidebar-icon" title="Notice Board"><i class="fas fa-bullhorn"></i></a>
+                <a href="#leave-status" class="sidebar-icon" title="Leave"><i class="fas fa-plane-departure"></i></a>
+                <a href="contact.html" class="sidebar-icon" title="Messages"><i class="fas fa-envelope"></i></a>
+                <a href="javascript:void(0)" class="sidebar-icon" title="Settings" onclick="alert('Settings panel coming soon.');"><i class="fas fa-cog"></i></a>
+            </nav>
+            <a href="staff-portal.html" class="sidebar-icon sidebar-logout" title="Log out" onclick="if(window.MHSAuth){MHSAuth.clearSession();}"><i class="fas fa-sign-out-alt"></i></a>
+        </aside>
+
+        <!-- Main column -->
+        <div class="staff-main">
+
+            <!-- Top bar -->
+            <header class="staff-topbar">
+                <div class="staff-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search">
+                </div>
+                <div class="staff-datetime">
+                    <strong id="staffDate">Loading date...</strong>
+                    <span id="staffTime">--:--:--</span>
+                </div>
+                <div class="staff-topbar-right">
+                    <div class="year-select"><i class="fas fa-calendar-alt"></i> Academic Year: 2025 / 2026</div>
+                    <a href="javascript:void(0)" class="topbar-icon-btn" title="Notifications" onclick="alert('You have no new notifications.');"><i class="fas fa-bell"></i><span class="dot"></span></a>
+                    <a href="contact.html" class="topbar-icon-btn" title="Messages"><i class="fas fa-comment-dots"></i></a>
+                    <div class="topbar-avatar"><i class="fas fa-user-tie"></i></div>
+                </div>
+            </header>
+
+            <div class="staff-content">
+                <h2 class="staff-breadcrumb">Staff Dashboard</h2>
+                <p class="staff-breadcrumb-trail">Dashboard / Staff Section / Staff Dashboard</p>
+
+                <!-- Welcome banner + Quick Links -->
+                <div class="staff-top-row">
+                    <div class="welcome-banner">
+                        <h2>Good Morning, <span id="staffGreetName">Mr. Ndlovu</span></h2>
+                        <p>Have a good day at work.</p>
+                        <div class="notice-line"><i class="fas fa-info-circle"></i> Notice: There is a staff meeting at 9AM today. Don't forget to attend!</div>
+                    </div>
+                    <div class="quick-links-card">
+                        <h3>Quick Links</h3>
+                        <div class="quick-links-grid">
+                            <a href="#todays-class" class="quick-link-btn">
+                                <span class="quick-link-icon qi-navy"><i class="fas fa-calendar-alt"></i></span>
+                                Time table
+                            </a>
+                            <a href="#attendance-section" class="quick-link-btn">
+                                <span class="quick-link-icon qi-gold"><i class="fas fa-clipboard-check"></i></span>
+                                Attendance
+                            </a>
+                            <a href="#best-performers" class="quick-link-btn">
+                                <span class="quick-link-icon qi-green"><i class="fas fa-file-alt"></i></span>
+                                Exam Result
+                            </a>
+                            <a href="#activities-section" class="quick-link-btn">
+                                <span class="quick-link-icon qi-red"><i class="fas fa-chart-bar"></i></span>
+                                Reports
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile strip + completion -->
+                <div class="staff-mid-row">
+                    <div class="staff-profile-strip">
+                        <div class="avatar-lg"><i class="fas fa-user-tie"></i></div>
+                        <div>
+                            <div class="staff-id">#STF2024017</div>
+                            <h3>Sipho Ndlovu</h3>
+                            <p>Classes Taken: Grade 10A, Grade 11B &middot; Mathematics</p>
+                        </div>
+                        <button type="button" class="btn-edit-profile" onclick="alert('Your edit request has been sent to the school office.');">Edit Profile</button>
+                    </div>
+                    <div class="completion-card">
+                        <div class="completion-ring"><span>95%</span></div>
+                        <p><strong>You Have Completed</strong>95% of Today's Plan</p>
+                    </div>
+                </div>
+
+                <!-- Today's Class -->
+                <div class="dashboard-panel" id="todays-class">
+                    <div class="panel-header">
+                        <h3>Today's Class</h3>
+                        <span class="panel-filter"><i class="fas fa-calendar-alt"></i> 5 Sep 2026</span>
+                    </div>
+                    <div class="class-scroll-row">
+                        <div class="class-chip highlight">
+                            <span class="time-tag"><i class="fas fa-clock"></i> 08:00 - 08:45</span>
+                            <div class="class-name">Grade 8, A</div>
+                        </div>
+                        <div class="class-chip">
+                            <span class="time-tag"><i class="fas fa-clock"></i> 08:45 - 09:30</span>
+                            <div class="class-name">Grade 9, B</div>
+                        </div>
+                        <div class="class-chip">
+                            <span class="time-tag"><i class="fas fa-clock"></i> 10:00 - 10:45</span>
+                            <div class="class-name">Grade 10, A</div>
+                        </div>
+                        <div class="class-chip">
+                            <span class="time-tag"><i class="fas fa-clock"></i> 11:00 - 11:45</span>
+                            <div class="class-name">Grade 11, B</div>
+                        </div>
+                        <div class="class-chip">
+                            <span class="time-tag"><i class="fas fa-clock"></i> 13:00 - 13:45</span>
+                            <div class="class-name">Grade 12, A</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Attendance + Best Performers -->
+                <div class="staff-analytics-row">
+
+                    <div class="dashboard-panel" id="attendance-section" style="margin-bottom: 0;">
+                        <div class="panel-header">
+                            <h3>Attendance</h3>
+                            <span class="panel-filter"><i class="fas fa-calendar-alt"></i> This Month</span>
+                        </div>
+                        <div class="legend-row">
+                            <span><span class="legend-dot" style="background:#10b981;"></span> Present</span>
+                            <span><span class="legend-dot" style="background:#ef4444;"></span> Absent</span>
+                            <span><span class="legend-dot" style="background:var(--gold);"></span> Late</span>
+                            <span><span class="legend-dot" style="background:#cbd5e1;"></span> Half Day</span>
+                        </div>
+                        <div class="day-chip-row">
+                            <div class="day-chip present">M</div>
+                            <div class="day-chip present">T</div>
+                            <div class="day-chip present">W</div>
+                            <div class="day-chip late">T</div>
+                            <div class="day-chip present">F</div>
+                            <div class="day-chip">S</div>
+                        </div>
+                        <div class="donut-wrap">
+                            <div class="donut-chart" style="background: conic-gradient(#10b981 0% 89%, #ef4444 89% 96%, var(--gold) 96% 100%);">
+                                <div class="donut-center">
+                                    <small>Attendance</small>
+                                    <strong>95%</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="working-days-note">No of total working days: <strong>28 Days</strong></p>
+                        <div class="attendance-summary">
+                            <div><strong>25</strong><span>Present</span></div>
+                            <div><strong>2</strong><span>Absent</span></div>
+                            <div><strong>0</strong><span>Half day</span></div>
+                            <div><strong>1</strong><span>Late</span></div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="dashboard-panel" id="best-performers">
+                            <div class="panel-header">
+                                <h3>Best Performers</h3>
+                                <span class="panel-filter"><i class="fas fa-calendar-alt"></i> This Month</span>
+                            </div>
+                            <div class="class-progress-list">
+                                <div class="class-progress-item">
+                                    <div class="cp-top"><span>Grade 10, A</span><span>80%</span></div>
+                                    <div class="progress-track"><div class="progress-fill" style="width: 80%;"></div></div>
+                                </div>
+                                <div class="class-progress-item">
+                                    <div class="cp-top"><span>Grade 11, B</span><span>54%</span></div>
+                                    <div class="progress-track"><div class="progress-fill" style="width: 54%;"></div></div>
+                                </div>
+                                <div class="class-progress-item">
+                                    <div class="cp-top"><span>Grade 9, B</span><span>76%</span></div>
+                                    <div class="progress-track"><div class="progress-fill" style="width: 76%;"></div></div>
+                                </div>
+                                <div class="class-progress-item">
+                                    <div class="cp-top"><span>Grade 8, A</span><span>88%</span></div>
+                                    <div class="progress-track"><div class="progress-fill" style="width: 88%;"></div></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-panel" id="student-progress" style="margin-top: 1.5rem; margin-bottom: 0;">
+                            <div class="panel-header">
+                                <h3>Student Progress</h3>
+                                <span class="panel-filter"><i class="fas fa-medal"></i> Top Performer</span>
+                            </div>
+                            <div class="student-progress-list">
+                                <div class="student-progress-item">
+                                    <div class="sp-avatar"><i class="fas fa-user"></i></div>
+                                    <div class="sp-info">
+                                        <strong>Nokuthula Zulu</strong>
+                                        <span>Grade 11, B</span>
+                                    </div>
+                                    <span class="sp-score">98%</span>
+                                </div>
+                                <div class="student-progress-item">
+                                    <div class="sp-avatar"><i class="fas fa-user"></i></div>
+                                    <div class="sp-info">
+                                        <strong>Sibusiso Khumalo</strong>
+                                        <span>Grade 10, A</span>
+                                    </div>
+                                    <span class="sp-score">96%</span>
+                                </div>
+                                <div class="student-progress-item">
+                                    <div class="sp-avatar"><i class="fas fa-user"></i></div>
+                                    <div class="sp-info">
+                                        <strong>Amahle Mokoena</strong>
+                                        <span>Grade 10, A</span>
+                                    </div>
+                                    <span class="sp-score">87%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-panel" style="margin-bottom: 0;">
+                        <h3 style="color: var(--navy); margin-bottom: 0.5rem;">Schedules</h3>
+                        <p style="font-size: 0.8rem; color: var(--gray); margin-bottom: 1rem;">September 2026</p>
+                        <div class="mini-calendar-grid">
+                            <div class="cal-dow">S</div><div class="cal-dow">M</div><div class="cal-dow">T</div><div class="cal-dow">W</div><div class="cal-dow">T</div><div class="cal-dow">F</div><div class="cal-dow">S</div>
+                            <div class="cal-day muted"></div><div class="cal-day muted"></div>
+                            <div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div><div class="cal-day">4</div>
+                            <div class="cal-day active">5</div>
+                            <div class="cal-day">6</div><div class="cal-day">7</div><div class="cal-day">8</div><div class="cal-day">9</div>
+                            <div class="cal-day highlight">10</div>
+                            <div class="cal-day">11</div>
+                            <div class="cal-day highlight">12</div>
+                            <div class="cal-day">13</div><div class="cal-day">14</div><div class="cal-day">15</div><div class="cal-day">16</div><div class="cal-day">17</div><div class="cal-day">18</div><div class="cal-day">19</div>
+                            <div class="cal-day">20</div><div class="cal-day">21</div><div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day">24</div><div class="cal-day">25</div><div class="cal-day">26</div>
+                            <div class="cal-day">27</div><div class="cal-day">28</div><div class="cal-day">29</div><div class="cal-day">30</div>
+                        </div>
+
+                        <h4 style="color: var(--navy); font-size: 0.95rem; margin: 1.5rem 0 0.25rem;">Upcoming Events</h4>
+                        <div class="upcoming-events-list">
+                            <div class="event-item">
+                                <div>
+                                    <strong>Staff Meeting</strong>
+                                    <span class="event-meta"><i class="fas fa-calendar"></i> 10 Sep 2026 &middot; 09:00 - 10:00</span>
+                                </div>
+                            </div>
+                            <div class="event-item">
+                                <div>
+                                    <strong>Parents, Teacher Meet</strong>
+                                    <span class="event-meta"><i class="fas fa-calendar"></i> 12 Sep 2026 &middot; 09:00 - 12:00</span>
+                                </div>
+                            </div>
+                            <div class="event-item alt">
+                                <div>
+                                    <strong>Mid-term Exams Begin</strong>
+                                    <span class="event-meta"><i class="fas fa-calendar"></i> 21 Sep 2026</span>
+                                </div>
+                            </div>
+                            <div class="event-item alt2">
+                                <div>
+                                    <strong>Sports Day</strong>
+                                    <span class="event-meta"><i class="fas fa-calendar"></i> 26 Sep 2026</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Syllabus / Lesson Plan -->
+                <div class="dashboard-panel" id="syllabus-section">
+                    <div class="panel-header">
+                        <h3>Syllabus / Lesson Plan</h3>
+                    </div>
+                    <div class="syllabus-scroll-row">
+                        <div class="syllabus-card">
+                            <div class="syllabus-tag">Grade 8, A</div>
+                            <div class="syllabus-card-body">
+                                <p>Introduction to Algebraic Expressions</p>
+                                <div class="progress-track" style="margin-bottom: 0.9rem;"><div class="progress-fill" style="width: 45%; background: #10b981;"></div></div>
+                                <div class="syllabus-actions">
+                                    <a href="javascript:void(0)" onclick="alert('Reschedule request sent.');"><i class="fas fa-calendar-alt"></i> Reschedule</a>
+                                    <a href="javascript:void(0)" class="share-link" onclick="alert('Lesson plan shared with class.');"><i class="fas fa-share"></i> Share</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="syllabus-card">
+                            <div class="syllabus-tag">Grade 9, B</div>
+                            <div class="syllabus-card-body">
+                                <p>Photosynthesis and Plant Biology</p>
+                                <div class="progress-track" style="margin-bottom: 0.9rem;"><div class="progress-fill" style="width: 62%;"></div></div>
+                                <div class="syllabus-actions">
+                                    <a href="javascript:void(0)" onclick="alert('Reschedule request sent.');"><i class="fas fa-calendar-alt"></i> Reschedule</a>
+                                    <a href="javascript:void(0)" class="share-link" onclick="alert('Lesson plan shared with class.');"><i class="fas fa-share"></i> Share</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="syllabus-card">
+                            <div class="syllabus-tag">Grade 10, A</div>
+                            <div class="syllabus-card-body">
+                                <p>Quadratic Equations - Part 2</p>
+                                <div class="progress-track" style="margin-bottom: 0.9rem;"><div class="progress-fill" style="width: 30%; background: #ef4444;"></div></div>
+                                <div class="syllabus-actions">
+                                    <a href="javascript:void(0)" onclick="alert('Reschedule request sent.');"><i class="fas fa-calendar-alt"></i> Reschedule</a>
+                                    <a href="javascript:void(0)" class="share-link" onclick="alert('Lesson plan shared with class.');"><i class="fas fa-share"></i> Share</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="syllabus-card">
+                            <div class="syllabus-tag">Grade 11, B</div>
+                            <div class="syllabus-card-body">
+                                <p>Organic Chemistry Fundamentals</p>
+                                <div class="progress-track" style="margin-bottom: 0.9rem;"><div class="progress-fill" style="width: 70%;"></div></div>
+                                <div class="syllabus-actions">
+                                    <a href="javascript:void(0)" onclick="alert('Reschedule request sent.');"><i class="fas fa-calendar-alt"></i> Reschedule</a>
+                                    <a href="javascript:void(0)" class="share-link" onclick="alert('Lesson plan shared with class.');"><i class="fas fa-share"></i> Share</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="syllabus-card">
+                            <div class="syllabus-tag">Grade 12, A</div>
+                            <div class="syllabus-card-body">
+                                <p>Exam Revision - Past Paper Review</p>
+                                <div class="progress-track" style="margin-bottom: 0.9rem;"><div class="progress-fill" style="width: 55%;"></div></div>
+                                <div class="syllabus-actions">
+                                    <a href="javascript:void(0)" onclick="alert('Reschedule request sent.');"><i class="fas fa-calendar-alt"></i> Reschedule</a>
+                                    <a href="javascript:void(0)" class="share-link" onclick="alert('Lesson plan shared with class.');"><i class="fas fa-share"></i> Share</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Notice Board / Leave Status / Activities -->
+                <div class="staff-footer-row">
+
+                    <div class="dashboard-panel" id="notice-board" style="margin-bottom: 0;">
+                        <div class="panel-header">
+                            <h3>Notice Board</h3>
+                            <a href="javascript:void(0)" class="panel-filter" onclick="alert('Showing all notices.');">View All</a>
+                        </div>
+                        <div class="notice-item">
+                            <span class="notice-icon ni-navy"><i class="fas fa-file-alt"></i></span>
+                            <div>
+                                <strong>Homework has been submitted successfully</strong>
+                                <span>13 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="notice-item">
+                            <span class="notice-icon ni-green"><i class="fas fa-check"></i></span>
+                            <div>
+                                <strong>"Transport Fees" paid successfully</strong>
+                                <span>13 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="notice-item">
+                            <span class="notice-icon ni-gold"><i class="fas fa-bell"></i></span>
+                            <div>
+                                <strong>Mid-term exam results will be released today</strong>
+                                <span>1 day ago</span>
+                            </div>
+                        </div>
+                        <div class="notice-item">
+                            <span class="notice-icon ni-red"><i class="fas fa-book"></i></span>
+                            <div>
+                                <strong>Homework added by Mr. Ndlovu from the textbook</strong>
+                                <span>1 day ago</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-panel" id="leave-status" style="margin-bottom: 0;">
+                        <div class="panel-header">
+                            <h3>Leave Status</h3>
+                            <a href="javascript:void(0)" class="panel-filter" onclick="alert('Leave application form coming soon.');">Apply Leave</a>
+                        </div>
+                        <div class="leave-tabs">
+                            <span class="active">Approval Status</span>
+                            <span>Holidays</span>
+                        </div>
+                        <div class="leave-item">
+                            <div>
+                                <strong>Emergency Leave</strong>
+                                <span>Applied: 17 Aug 2026 &middot; Leave: 15 Aug 2026</span>
+                            </div>
+                            <span class="leave-badge pending">Pending</span>
+                        </div>
+                        <div class="leave-item">
+                            <div>
+                                <strong>Medical Leave</strong>
+                                <span>Applied: 3 Aug 2026 &middot; Leave: 4 Aug 2026</span>
+                            </div>
+                            <span class="leave-badge approved">Approved</span>
+                        </div>
+                        <div class="leave-item">
+                            <div>
+                                <strong>Family Function</strong>
+                                <span>Applied: 20 Jul 2026 &middot; Leave: 22 Jul 2026</span>
+                            </div>
+                            <span class="leave-badge approved">Approved</span>
+                        </div>
+                        <div class="leave-item">
+                            <div>
+                                <strong>Personal Leave</strong>
+                                <span>Applied: 5 Jul 2026 &middot; Leave: 6 Jul 2026</span>
+                            </div>
+                            <span class="leave-badge declined">Declined</span>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-panel" id="activities-section" style="margin-bottom: 0;">
+                        <div class="panel-header">
+                            <h3>Activities</h3>
+                            <span class="panel-filter"><i class="fas fa-calendar-alt"></i> 2025 - 2026</span>
+                        </div>
+                        <div class="activity-tabs">
+                            <span>Library</span>
+                            <span>Transport</span>
+                            <span class="active">Reports</span>
+                            <span>Payslip</span>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-file-alt"></i>
+                            <div>
+                                <strong>Grade 10, A - Mid-term Result</strong>
+                                <span>Uploaded on: 25 Aug 2026</span>
+                            </div>
+                            <a href="javascript:void(0)" class="download-icon" onclick="alert('Download will be available soon.');"><i class="fas fa-download"></i></a>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-file-alt"></i>
+                            <div>
+                                <strong>Grade 11, B - Term 2 Result</strong>
+                                <span>Uploaded on: 21 Jun 2026</span>
+                            </div>
+                            <a href="javascript:void(0)" class="download-icon" onclick="alert('Download will be available soon.');"><i class="fas fa-download"></i></a>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-file-alt"></i>
+                            <div>
+                                <strong>Grade 9, B - Assignment Log</strong>
+                                <span>Updated weekly</span>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;" onclick="alert('Upload feature coming soon.');">Upload New Report</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        function updateStaffDateTime() {
+            const now = new Date();
+            const dateEl = document.getElementById('staffDate');
+            const timeEl = document.getElementById('staffTime');
+            if (dateEl) {
+                dateEl.textContent = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+            }
+            if (timeEl) {
+                timeEl.textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+            }
+            const heading = document.querySelector('.welcome-banner h2');
+            if (heading) {
+                const hour = now.getHours();
+                let greeting = 'Good Morning,';
+                if (hour >= 12 && hour < 17) greeting = 'Good Afternoon,';
+                else if (hour >= 17) greeting = 'Good Evening,';
+                heading.childNodes[0].textContent = greeting + ' ';
+            }
+        }
+        updateStaffDateTime();
+        setInterval(updateStaffDateTime, 1000);
+    </script>
+</body>
+</html>

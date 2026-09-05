@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="../public/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Dashboard - Mbambangwe High School</title>
+    <meta name="description" content="Parent dashboard for Mbambangwe High School - track your child's progress, attendance, fees and assignments.">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+
+    <div class="staff-shell">
+
+        <!-- Sidebar -->
+        <aside class="staff-sidebar">
+            <img src="../public/logo.png" alt="Mbambangwe High School logo" class="sidebar-logo">
+            <nav class="sidebar-nav">
+                <a href="#" class="sidebar-icon active" title="Dashboard"><i class="fas fa-th-large"></i></a>
+                <a href="#statistics-section" class="sidebar-icon" title="Progress"><i class="fas fa-chart-line"></i></a>
+                <a href="#attendance-section" class="sidebar-icon" title="Meeting Attendance"><i class="fas fa-clipboard-check"></i></a>
+                <a href="#fee-section" class="sidebar-icon" title="Fees"><i class="fas fa-wallet"></i></a>
+                <a href="#assignments-section" class="sidebar-icon" title="Assignments"><i class="fas fa-book-open"></i></a>
+                <a href="#reports-section" class="sidebar-icon" title="Reports"><i class="fas fa-file-alt"></i></a>
+                <a href="#notice-board" class="sidebar-icon" title="Notice Board"><i class="fas fa-bullhorn"></i></a>
+                <a href="contact.html" class="sidebar-icon" title="Messages"><i class="fas fa-envelope"></i></a>
+                <a href="javascript:void(0)" class="sidebar-icon" title="Settings" onclick="alert('Settings panel coming soon.');"><i class="fas fa-cog"></i></a>
+            </nav>
+            <a href="parent-portal.html" class="sidebar-icon sidebar-logout" title="Log out" onclick="if(window.MHSAuth){MHSAuth.clearSession();}"><i class="fas fa-sign-out-alt"></i></a>
+        </aside>
+
+        <!-- Main column -->
+        <div class="staff-main">
+
+            <!-- Top bar -->
+            <header class="staff-topbar">
+                <div class="staff-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search">
+                </div>
+                <div class="staff-datetime">
+                    <strong id="staffDate">Loading date...</strong>
+                    <span id="staffTime">--:--:--</span>
+                </div>
+                <div class="staff-topbar-right">
+                    <div class="year-select"><i class="fas fa-calendar-alt"></i> Academic Year: 2025 / 2026</div>
+                    <a href="javascript:void(0)" class="topbar-icon-btn" title="Notifications" onclick="alert('You have no new notifications.');"><i class="fas fa-bell"></i><span class="dot"></span></a>
+                    <a href="contact.html" class="topbar-icon-btn" title="Messages"><i class="fas fa-comment-dots"></i></a>
+                    <div class="topbar-avatar"><i class="fas fa-user"></i></div>
+                </div>
+            </header>
+
+            <div class="staff-content">
+
+                <!-- Header + student switcher -->
+                <div class="parent-header-row">
+                    <div>
+                        <h2 class="staff-breadcrumb">Parent Dashboard</h2>
+                        <p class="staff-breadcrumb-trail">Dashboard / Parent Section / Parent Dashboard</p>
+                    </div>
+                    <div class="student-switcher">
+                        <span class="switcher-label">Select Student</span>
+                        <div class="student-switcher-avatars">
+                            <div class="sw-avatar active" title="Janet Bown">J</div>
+                            <div class="sw-avatar" title="Michael Bown">M</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile strip -->
+                <div class="parent-profile-row">
+                    <div class="parent-profile-info">
+                        <div class="avatar-lg"><i class="fas fa-user-tie"></i></div>
+                        <div>
+                            <div class="staff-id">#P124556</div>
+                            <h3>Thomas Bown</h3>
+                            <p>Added On: 25 Mar 2024 &middot; Child: Janet Bown, Grade 9C</p>
+                        </div>
+                    </div>
+                    <div class="parent-profile-actions">
+                        <a href="javascript:void(0)" class="btn-sm" onclick="alert('Request form coming soon.');"><i class="fas fa-envelope-open-text"></i> Raise a Request</a>
+                    </div>
+                </div>
+
+                <!-- Overview stat cards -->
+                <div class="stat-cards-row">
+                    <div class="stat-card">
+                        <div class="stat-card-top">
+                            <span class="stat-icon qi-navy"><i class="fas fa-chart-line"></i></span>
+                            <div>
+                                <strong>72%</strong>
+                                <span>Avg. Exam Score</span>
+                            </div>
+                        </div>
+                        <div class="stat-card-foot">
+                            <span>Last updated: Aug 2026</span>
+                            <a href="#statistics-section" onclick="document.getElementById('statistics-section').scrollIntoView({behavior:'smooth'});">View</a>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-top">
+                            <span class="stat-icon qi-gold"><i class="fas fa-users"></i></span>
+                            <div>
+                                <strong>95%</strong>
+                                <span>PTM Attendance</span>
+                            </div>
+                        </div>
+                        <div class="stat-card-foot">
+                            <span>8 attended &middot; 1 missed</span>
+                            <a href="#attendance-section" onclick="document.getElementById('attendance-section').scrollIntoView({behavior:'smooth'});">View</a>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-top">
+                            <span class="stat-icon qi-red"><i class="fas fa-wallet"></i></span>
+                            <div>
+                                <strong>AED 16,500</strong>
+                                <span>Total Outstanding</span>
+                            </div>
+                        </div>
+                        <div class="stat-card-foot">
+                            <span>Due: 30 Sep 2026</span>
+                            <a href="#fee-section" onclick="document.getElementById('fee-section').scrollIntoView({behavior:'smooth'});">View</a>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-top">
+                            <span class="stat-icon qi-green"><i class="fas fa-book-open"></i></span>
+                            <div>
+                                <strong>4</strong>
+                                <span>Pending Assignments</span>
+                            </div>
+                        </div>
+                        <div class="stat-card-foot">
+                            <span>2 overdue</span>
+                            <a href="#assignments-section" onclick="document.getElementById('assignments-section').scrollIntoView({behavior:'smooth'});">View</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Statistics + Notice Board -->
+                <div class="parent-row-2">
+                    <div class="dashboard-panel" id="statistics-section" style="margin-bottom: 0;">
+                        <div class="panel-header">
+                            <h3>Statistics</h3>
+                            <span class="panel-filter"><i class="fas fa-calendar-alt"></i> 2025 - 2026</span>
+                        </div>
+                        <div class="chart-legend-dots">
+                            <span><span class="legend-dot" style="background:var(--navy);"></span> Avg. Exam Score: 72%</span>
+                            <span><span class="legend-dot" style="background:var(--gold);"></span> Avg. Attendance: 95%</span>
+                        </div>
+                        <div class="line-chart-wrap">
+                            <svg viewBox="0 0 810 260" xmlns="http://www.w3.org/2000/svg">
+                                <line x1="20" y1="20" x2="20" y2="240" stroke="#f1f5f9" stroke-width="1"/>
+                                <line x1="20" y1="240" x2="790" y2="240" stroke="#f1f5f9" stroke-width="1"/>
+                                <line x1="20" y1="130" x2="790" y2="130" stroke="#f8fafc" stroke-width="1"/>
+                                <line x1="20" y1="20" x2="790" y2="20" stroke="#f8fafc" stroke-width="1"/>
+                                <polyline points="20,152.0 90,141.0 160,119.0 230,130.0 300,108.0 370,112.4 440,97.0 510,64.0 580,68.4 650,59.6 720,53.0 790,46.4" fill="none" stroke="var(--navy)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                <polyline points="20,108.0 90,103.6 160,112.4 230,97.0 300,86.0 370,90.4 440,81.6 510,77.2 580,42.0 650,37.6 720,39.8 790,31.0" fill="none" stroke="var(--gold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <div class="line-chart-months">
+                                <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-panel" id="notice-board" style="margin-bottom: 0;">
+                        <div class="panel-header">
+                            <h3>Notice Board</h3>
+                            <a href="javascript:void(0)" class="panel-filter" onclick="alert('Showing all notices.');">View All</a>
+                        </div>
+                        <div class="notice-item">
+                            <span class="notice-icon ni-red"><i class="fas fa-file-alt"></i></span>
+                            <div>
+                                <strong>Homework has been submitted successfully</strong>
+                                <span>13 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="notice-item">
+                            <span class="notice-icon ni-green"><i class="fas fa-check"></i></span>
+                            <div>
+                                <strong>"Transport Fees" paid successfully</strong>
+                                <span>13 hours ago</span>
+                            </div>
+                        </div>
+                        <div class="notice-item">
+                            <span class="notice-icon ni-navy"><i class="fas fa-bell"></i></span>
+                            <div>
+                                <strong>Mid-term exam results will be released today</strong>
+                                <span>1 day ago</span>
+                            </div>
+                        </div>
+                        <div class="notice-item">
+                            <span class="notice-icon ni-gold"><i class="fas fa-book"></i></span>
+                            <div>
+                                <strong>Homework added by Mr. Shan from the textbook</strong>
+                                <span>1 day ago</span>
+                            </div>
+                        </div>
+                        <div class="notice-item" style="border-bottom: none;">
+                            <span class="notice-icon ni-navy"><i class="fas fa-calendar-alt"></i></span>
+                            <div>
+                                <strong>Parents, Teacher Meet scheduled for 10 Sep 2026</strong>
+                                <span>2 days ago</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Meeting Attendance + Fee Reminder -->
+                <div class="parent-row-2" id="attendance-section">
+                    <div class="dashboard-panel" style="margin-bottom: 0;">
+                        <div class="panel-header">
+                            <h3>Parents, Teacher Meeting Attendance</h3>
+                            <span class="panel-filter"><i class="fas fa-calendar-alt"></i> This Year</span>
+                        </div>
+                        <div class="parent-attendance-row">
+                            <div>
+                                <p style="font-size: 0.85rem; color: var(--gray); margin-bottom: 0.75rem;">Total meetings this year: <strong style="color: var(--navy);">11</strong></p>
+                                <div class="meeting-item">
+                                    <span class="meeting-icon attended"><i class="fas fa-check"></i></span>
+                                    <div class="meeting-info">
+                                        <strong>Term 1 Progress Meeting</strong>
+                                        <span>14 Feb 2026</span>
+                                    </div>
+                                    <span class="meeting-status attended">Attended</span>
+                                </div>
+                                <div class="meeting-item">
+                                    <span class="meeting-icon attended"><i class="fas fa-check"></i></span>
+                                    <div class="meeting-info">
+                                        <strong>Mid-term Feedback Session</strong>
+                                        <span>18 Apr 2026</span>
+                                    </div>
+                                    <span class="meeting-status attended">Attended</span>
+                                </div>
+                                <div class="meeting-item">
+                                    <span class="meeting-icon missed"><i class="fas fa-times"></i></span>
+                                    <div class="meeting-info">
+                                        <strong>Subject Teacher Consultation</strong>
+                                        <span>22 Jun 2026</span>
+                                    </div>
+                                    <span class="meeting-status missed">Missed</span>
+                                </div>
+                                <div class="meeting-item" style="border-bottom: none;">
+                                    <span class="meeting-icon upcoming"><i class="fas fa-clock"></i></span>
+                                    <div class="meeting-info">
+                                        <strong>Term 2 Progress Meeting</strong>
+                                        <span>10 Sep 2026</span>
+                                    </div>
+                                    <span class="meeting-status upcoming">Upcoming</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="donut-wrap">
+                                    <div class="donut-chart" style="background: conic-gradient(#10b981 0% 89%, #ef4444 89% 100%);">
+                                        <div class="donut-center">
+                                            <small>Attended</small>
+                                            <strong>95%</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="attendance-summary" style="grid-template-columns: repeat(3, 1fr);">
+                                    <div><strong>8</strong><span>Attended</span></div>
+                                    <div><strong>1</strong><span>Missed</span></div>
+                                    <div><strong>1</strong><span>Upcoming</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-panel" id="fee-section" style="margin-bottom: 0;">
+                        <div class="panel-header">
+                            <h3>Fee Reminder</h3>
+                        </div>
+                        <div class="fee-item">
+                            <span class="fee-icon"><i class="fas fa-file-invoice"></i></span>
+                            <div class="fee-info">
+                                <span>Tuition Fee - Term 2</span>
+                                <strong>AED 16,500</strong>
+                            </div>
+                            <span class="fee-arrow"><i class="fas fa-chevron-right"></i></span>
+                        </div>
+                        <div class="fee-item">
+                            <span class="fee-icon"><i class="fas fa-file-invoice"></i></span>
+                            <div class="fee-info">
+                                <span>Transport Fee - Term 2</span>
+                                <strong>AED 2,200</strong>
+                            </div>
+                            <span class="fee-arrow"><i class="fas fa-chevron-right"></i></span>
+                        </div>
+                        <div class="fee-item" style="border-bottom: none;">
+                            <span class="fee-icon"><i class="fas fa-file-invoice"></i></span>
+                            <div class="fee-info">
+                                <span>Activity Fee - Term 2</span>
+                                <strong>AED 850</strong>
+                            </div>
+                            <span class="fee-arrow"><i class="fas fa-chevron-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Assignments + Reports -->
+                <div class="parent-row-2" style="grid-template-columns: 1fr 1fr;">
+                    <div class="dashboard-panel" id="assignments-section" style="margin-bottom: 0;">
+                        <div class="panel-header">
+                            <h3>Assignments</h3>
+                            <span class="panel-filter"><i class="fas fa-calendar-alt"></i> This Year</span>
+                        </div>
+                        <div class="assignment-tabs">
+                            <span class="active">Overdue</span>
+                            <span>New</span>
+                            <span>In Progress</span>
+                        </div>
+                        <div class="assignment-item">
+                            <div class="assignment-info">
+                                <strong>Algebra and Arithmetic Assignment</strong>
+                                <span>17 Jun 2026</span>
+                            </div>
+                            <div class="assignment-meta">
+                                <span class="assignment-attachment"><i class="fas fa-paperclip"></i> 2</span>
+                                <span class="assignment-arrow"><i class="fas fa-chevron-right"></i></span>
+                            </div>
+                        </div>
+                        <div class="assignment-item">
+                            <div class="assignment-info">
+                                <strong>Science Assignment</strong>
+                                <span>20 Jun 2026</span>
+                            </div>
+                            <div class="assignment-meta">
+                                <span class="assignment-attachment"><i class="fas fa-paperclip"></i> 2</span>
+                                <span class="assignment-arrow"><i class="fas fa-chevron-right"></i></span>
+                            </div>
+                        </div>
+                        <div class="assignment-item">
+                            <div class="assignment-info">
+                                <strong>History Assignment</strong>
+                                <span>20 Jun 2026</span>
+                            </div>
+                            <div class="assignment-meta">
+                                <span class="assignment-attachment"><i class="fas fa-paperclip"></i> 2</span>
+                                <span class="assignment-arrow"><i class="fas fa-chevron-right"></i></span>
+                            </div>
+                        </div>
+                        <div class="assignment-item" style="border-bottom: none;">
+                            <div class="assignment-info">
+                                <strong>Computer Assignment</strong>
+                                <span>20 Jun 2026</span>
+                            </div>
+                            <div class="assignment-meta">
+                                <span class="assignment-attachment"><i class="fas fa-paperclip"></i> 2</span>
+                                <span class="assignment-arrow"><i class="fas fa-chevron-right"></i></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-panel" id="reports-section" style="margin-bottom: 0;">
+                        <div class="panel-header">
+                            <h3>Reports</h3>
+                            <span class="panel-filter"><i class="fas fa-calendar-alt"></i> This Year</span>
+                        </div>
+                        <div class="report-columns">
+                            <div class="report-col">
+                                <h4>Academic Reports</h4>
+                                <div class="report-pdf-item">
+                                    <span class="report-pdf-icon">PDF</span>
+                                    <span>Term - 1 Report</span>
+                                    <button type="button" class="report-download-btn" onclick="alert('Download will be available soon.');"><i class="fas fa-download"></i></button>
+                                </div>
+                                <div class="report-pdf-item">
+                                    <span class="report-pdf-icon">PDF</span>
+                                    <span>Term - 2 Report</span>
+                                    <button type="button" class="report-download-btn" onclick="alert('Download will be available soon.');"><i class="fas fa-download"></i></button>
+                                </div>
+                                <div class="report-pdf-item" style="margin-bottom: 0;">
+                                    <span class="report-pdf-icon">PDF</span>
+                                    <span>Term - 3 Report</span>
+                                    <button type="button" class="report-download-btn" onclick="alert('Download will be available soon.');"><i class="fas fa-download"></i></button>
+                                </div>
+                            </div>
+                            <div class="report-col">
+                                <h4>Performance</h4>
+                                <div class="report-pdf-item">
+                                    <span class="report-pdf-icon">PDF</span>
+                                    <span>Term - 1 Report</span>
+                                    <button type="button" class="report-download-btn" onclick="alert('Download will be available soon.');"><i class="fas fa-download"></i></button>
+                                </div>
+                                <div class="report-pdf-item">
+                                    <span class="report-pdf-icon">PDF</span>
+                                    <span>Term - 2 Report</span>
+                                    <button type="button" class="report-download-btn" onclick="alert('Download will be available soon.');"><i class="fas fa-download"></i></button>
+                                </div>
+                                <div class="report-pdf-item" style="margin-bottom: 0;">
+                                    <span class="report-pdf-icon">PDF</span>
+                                    <span>Term - 3 Report</span>
+                                    <button type="button" class="report-download-btn" onclick="alert('Download will be available soon.');"><i class="fas fa-download"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        function updateStaffDateTime() {
+            const now = new Date();
+            const dateEl = document.getElementById('staffDate');
+            const timeEl = document.getElementById('staffTime');
+            if (dateEl) {
+                dateEl.textContent = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+            }
+            if (timeEl) {
+                timeEl.textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+            }
+        }
+        updateStaffDateTime();
+        setInterval(updateStaffDateTime, 1000);
+
+        document.querySelectorAll('.sw-avatar').forEach(function (el) {
+            el.addEventListener('click', function () {
+                document.querySelectorAll('.sw-avatar').forEach(function (s) { s.classList.remove('active'); });
+                el.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

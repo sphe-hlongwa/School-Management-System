@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="../public/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard - Mbambangwe High School</title>
+    <meta name="description" content="Student dashboard for Mbambangwe High School - view your grades, attendance, schedule and assignments.">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+
+    <div class="staff-shell">
+
+        <!-- Sidebar -->
+        <aside class="staff-sidebar">
+            <img src="../public/logo.png" alt="Mbambangwe High School logo" class="sidebar-logo">
+            <nav class="sidebar-nav">
+                <a href="#" class="sidebar-icon active" title="Dashboard"><i class="fas fa-th-large"></i></a>
+                <a href="#attendance-section" class="sidebar-icon" title="Subjects &amp; Attendance"><i class="fas fa-book-reader"></i></a>
+                <a href="#schedule-section" class="sidebar-icon" title="Class Schedule"><i class="fas fa-calendar-alt"></i></a>
+                <a href="javascript:void(0)" class="sidebar-icon" title="Grades &amp; Transcript" onclick="alert('Results will be published here once released by the school.');"><i class="fas fa-file-alt"></i></a>
+                <a href="academics.html" class="sidebar-icon" title="Assignments"><i class="fas fa-clipboard-list"></i></a>
+                <a href="javascript:void(0)" class="sidebar-icon" title="Academic Calendar" onclick="alert('Academic calendar coming soon.');"><i class="fas fa-calendar-week"></i></a>
+                <a href="javascript:void(0)" class="sidebar-icon" title="Fees" onclick="alert('Online fee payment will be available soon. Please contact the finance office.');"><i class="fas fa-wallet"></i></a>
+                <a href="admissions.html" class="sidebar-icon" title="Documents &amp; Forms"><i class="fas fa-folder-open"></i></a>
+                <a href="activities.html" class="sidebar-icon" title="Clubs &amp; Activities"><i class="fas fa-users"></i></a>
+                <a href="contact.html" class="sidebar-icon" title="Messages"><i class="fas fa-envelope"></i></a>
+                <a href="javascript:void(0)" class="sidebar-icon" title="Settings" onclick="alert('Settings panel coming soon.');"><i class="fas fa-cog"></i></a>
+            </nav>
+            <a href="student-portal.html" class="sidebar-icon sidebar-logout" title="Log out" onclick="if(window.MHSAuth){MHSAuth.clearSession();}"><i class="fas fa-sign-out-alt"></i></a>
+        </aside>
+
+        <!-- Main column -->
+        <div class="staff-main">
+
+            <!-- Top bar -->
+            <header class="staff-topbar">
+                <div class="staff-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search">
+                </div>
+                <div class="staff-datetime">
+                    <strong id="staffDate">Loading date...</strong>
+                    <span id="staffTime">--:--:--</span>
+                </div>
+                <div class="staff-topbar-right">
+                    <div class="year-select"><i class="fas fa-calendar-alt"></i> Academic Year: 2025 / 2026</div>
+                    <a href="javascript:void(0)" class="topbar-icon-btn" title="Notifications" onclick="alert('You have no new notifications.');"><i class="fas fa-bell"></i><span class="dot"></span></a>
+                    <a href="contact.html" class="topbar-icon-btn" title="Messages"><i class="fas fa-comment-dots"></i></a>
+                    <div class="topbar-avatar"><i class="fas fa-user-graduate"></i></div>
+                </div>
+            </header>
+
+            <div class="staff-content">
+
+                <h2 class="staff-breadcrumb">Student Dashboard</h2>
+                <p class="staff-breadcrumb-trail">Dashboard / Student Section / Student Dashboard</p>
+
+                <!-- Welcome banner -->
+                <div class="welcome-banner" style="margin-bottom: 1.5rem;">
+                    <h2>Welcome Back, <span id="staffGreetName">Lindiwe Dlamini</span></h2>
+                    <p>Here is your academic summary for Term 3.</p>
+                    <div class="notice-line"><i class="fas fa-info-circle"></i> Next class: Mathematics at 08:30 AM, Room 12</div>
+                </div>
+
+                <!-- Stat cards -->
+                <div class="stat-cards-row">
+                    <div class="stat-card">
+                        <div class="stat-card-top with-delta">
+                            <div>
+                                <span class="stat-icon qi-navy" style="margin-bottom: 0.75rem;"><i class="fas fa-graduation-cap"></i></span>
+                                <div class="stat-value-block"><strong>82%</strong><span class="stat-unit">Term Average</span></div>
+                            </div>
+                            <span class="stat-delta down">-1.5 Points</span>
+                        </div>
+                        <div class="stat-card-foot" style="border-top: none; padding-top: 0;">
+                            <span>Compared to last term</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-top with-delta">
+                            <div>
+                                <span class="stat-icon qi-gold" style="margin-bottom: 0.75rem;"><i class="fas fa-clipboard-check"></i></span>
+                                <div class="stat-value-block"><strong>94%</strong><span class="stat-unit">Attendance Rate</span></div>
+                            </div>
+                            <span class="stat-delta up">+2% Increase</span>
+                        </div>
+                        <div class="stat-card-foot" style="border-top: none; padding-top: 0;">
+                            <span>Compared to last month</span>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-top with-delta">
+                            <div>
+                                <span class="stat-icon qi-green" style="margin-bottom: 0.75rem;"><i class="fas fa-book-open"></i></span>
+                                <div class="stat-value-block"><strong>7</strong><span class="stat-unit">/7 Active Subjects</span></div>
+                            </div>
+                            <span class="stat-delta up">This term</span>
+                        </div>
+                        <div class="stat-card-foot" style="border-top: none; padding-top: 0;">
+                            <span>Enrolled subjects</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Term average chart + Daily schedule -->
+                <div class="student-row-2">
+                    <div class="dashboard-panel" style="margin-bottom: 0;">
+                        <div class="panel-header">
+                            <h3>Term Average</h3>
+                            <span class="panel-filter"><i class="fas fa-calendar-alt"></i> All Terms</span>
+                        </div>
+                        <p style="font-size: 0.82rem; color: var(--gray); margin-top: -0.75rem; margin-bottom: 1rem;">Comparison between your average and the class average</p>
+                        <div class="chart-legend-dots">
+                            <span><span class="legend-dot" style="background:var(--navy);"></span> Your Average</span>
+                            <span><span class="legend-dot" style="background:var(--gold);"></span> Class Average</span>
+                        </div>
+                        <div class="line-chart-wrap">
+                            <svg viewBox="0 0 810 260" xmlns="http://www.w3.org/2000/svg">
+                                <line x1="20" y1="20" x2="20" y2="240" stroke="#f1f5f9" stroke-width="1"/>
+                                <line x1="20" y1="240" x2="790" y2="240" stroke="#f1f5f9" stroke-width="1"/>
+                                <line x1="20" y1="130" x2="790" y2="130" stroke="#f8fafc" stroke-width="1"/>
+                                <line x1="20" y1="20" x2="790" y2="20" stroke="#f8fafc" stroke-width="1"/>
+                                <polyline points="20.0,81.6 148.3,86.0 276.7,90.4 405.0,77.2 533.3,72.8 661.7,68.4 790.0,64.0" fill="none" stroke="var(--gold)" stroke-width="3" stroke-dasharray="6 5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <polyline points="20.0,68.4 148.3,77.2 276.7,86.0 405.0,59.6 533.3,53.0 661.7,46.4 790.0,42.0" fill="none" stroke="var(--navy)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            <div class="line-chart-months">
+                                <span>T1 2025</span><span>T2 2025</span><span>T3 2025</span><span>T4 2025</span><span>T1 2026</span><span>T2 2026</span><span>T3 2026</span>
+                            </div>
+                        </div>
+                        <div class="chart-highlight-note">
+                            <strong>Term 3, 2026</strong>
+                            <div class="chn-values">
+                                <span><span class="legend-dot" style="background:var(--navy);"></span> Your Average <strong>90%</strong></span>
+                                <span><span class="legend-dot" style="background:var(--gold);"></span> Class Average <strong>80%</strong></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-panel" id="schedule-section" style="margin-bottom: 0;">
+                        <div class="panel-header">
+                            <h3>Daily Class Schedule</h3>
+                        </div>
+                        <p style="font-size: 0.8rem; color: var(--gray); margin-top: -0.75rem; margin-bottom: 0.5rem;">Schedule for your class in whole day</p>
+                        <div class="schedule-item">
+                            <span class="schedule-avatar">MA</span>
+                            <div class="schedule-info">
+                                <strong>Mathematics</strong>
+                                <span class="schedule-time">08:30 AM - 09:30 AM</span>
+                                <span class="schedule-meta">Mrs. Sarah Jenkins &middot; Room 12</span>
+                            </div>
+                        </div>
+                        <div class="schedule-item">
+                            <span class="schedule-avatar">IZ</span>
+                            <div class="schedule-info">
+                                <strong>IsiZulu First Additional Language</strong>
+                                <span class="schedule-time">09:30 AM - 11:00 AM</span>
+                                <span class="schedule-meta">Mrs. Nomvula Zulu &middot; Room 9</span>
+                            </div>
+                        </div>
+                        <div class="schedule-item" style="border-bottom: none;">
+                            <span class="schedule-avatar">PS</span>
+                            <div class="schedule-info">
+                                <strong>Physical Sciences</strong>
+                                <span class="schedule-time">01:30 PM - 03:10 PM</span>
+                                <span class="schedule-meta">Mr. Sipho Nkosi &middot; Lab 402</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Subject attendance overview + Recent absences -->
+                <div class="student-row-2" id="attendance-section">
+                    <div class="dashboard-panel" style="margin-bottom: 0;">
+                        <div class="panel-header">
+                            <h3>Subject Attendance Overview</h3>
+                            <div style="display:flex; gap:0.75rem;">
+                                <span class="panel-filter"><i class="fas fa-calendar-alt"></i> Current Term</span>
+                                <a href="javascript:void(0)" class="btn-sm btn-gold" onclick="alert('Export will be available soon.');"><i class="fas fa-download"></i> Export Report</a>
+                            </div>
+                        </div>
+                        <p style="font-size: 0.82rem; color: var(--gray); margin-top: -0.75rem; margin-bottom: 1rem;">Detailed breakdown of your participation per subject</p>
+                        <table class="subject-table">
+                            <thead>
+                                <tr>
+                                    <th>Subject</th>
+                                    <th>Teacher</th>
+                                    <th>Sessions</th>
+                                    <th>Attendance Rate</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <div class="subject-cell">
+                                            <span class="subject-icon"><i class="fas fa-square-root-alt"></i></span>
+                                            <div><strong>Mathematics</strong><span>MATH-301</span></div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="teacher-cell"><span class="teacher-avatar">SJ</span> Mrs. Sarah Jenkins</div>
+                                    </td>
+                                    <td>24 / 25</td>
+                                    <td class="rate-cell">
+                                        <strong>96%</strong>
+                                        <div class="progress-track"><div class="progress-fill" style="width: 96%; background: #10b981;"></div></div>
+                                    </td>
+                                    <td><span class="tag-badge tag-excellent">Excellent</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="subject-cell">
+                                            <span class="subject-icon"><i class="fas fa-book"></i></span>
+                                            <div><strong>English Home Language</strong><span>ENGH-302</span></div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="teacher-cell"><span class="teacher-avatar">AB</span> Ms. Amanda Botha</div>
+                                    </td>
+                                    <td>23 / 25</td>
+                                    <td class="rate-cell">
+                                        <strong>92%</strong>
+                                        <div class="progress-track"><div class="progress-fill" style="width: 92%; background: #10b981;"></div></div>
+                                    </td>
+                                    <td><span class="tag-badge tag-excellent">Excellent</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="subject-cell">
+                                            <span class="subject-icon"><i class="fas fa-flask"></i></span>
+                                            <div><strong>Physical Sciences</strong><span>PHSC-303</span></div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="teacher-cell"><span class="teacher-avatar">SN</span> Mr. Sipho Nkosi</div>
+                                    </td>
+                                    <td>15 / 22</td>
+                                    <td class="rate-cell">
+                                        <strong>68%</strong>
+                                        <div class="progress-track"><div class="progress-fill" style="width: 68%; background: #ef4444;"></div></div>
+                                    </td>
+                                    <td><span class="tag-badge tag-critical">Critical</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="subject-cell">
+                                            <span class="subject-icon"><i class="fas fa-leaf"></i></span>
+                                            <div><strong>Life Sciences</strong><span>LFSC-304</span></div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="teacher-cell"><span class="teacher-avatar">TM</span> Ms. Thandeka Mokoena</div>
+                                    </td>
+                                    <td>20 / 22</td>
+                                    <td class="rate-cell">
+                                        <strong>91%</strong>
+                                        <div class="progress-track"><div class="progress-fill" style="width: 91%; background: #10b981;"></div></div>
+                                    </td>
+                                    <td><span class="tag-badge tag-excellent">Excellent</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="subject-cell">
+                                            <span class="subject-icon"><i class="fas fa-globe"></i></span>
+                                            <div><strong>Geography</strong><span>GEOG-305</span></div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="teacher-cell"><span class="teacher-avatar">DN</span> Mr. David Naidoo</div>
+                                    </td>
+                                    <td>20 / 25</td>
+                                    <td class="rate-cell">
+                                        <strong>82%</strong>
+                                        <div class="progress-track"><div class="progress-fill" style="width: 82%; background: var(--gold);"></div></div>
+                                    </td>
+                                    <td><span class="tag-badge tag-warning">Warning</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="subject-cell">
+                                            <span class="subject-icon"><i class="fas fa-language"></i></span>
+                                            <div><strong>IsiZulu First Additional Language</strong><span>ISIZ-306</span></div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="teacher-cell"><span class="teacher-avatar">NZ</span> Mrs. Nomvula Zulu</div>
+                                    </td>
+                                    <td>20 / 25</td>
+                                    <td class="rate-cell">
+                                        <strong>80%</strong>
+                                        <div class="progress-track"><div class="progress-fill" style="width: 80%; background: var(--gold);"></div></div>
+                                    </td>
+                                    <td><span class="tag-badge tag-warning">Warning</span></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <div class="subject-cell">
+                                            <span class="subject-icon"><i class="fas fa-heartbeat"></i></span>
+                                            <div><strong>Life Orientation</strong><span>LIOR-307</span></div>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div class="teacher-cell"><span class="teacher-avatar">PV</span> Mr. Peter van Wyk</div>
+                                    </td>
+                                    <td>25 / 25</td>
+                                    <td class="rate-cell">
+                                        <strong>100%</strong>
+                                        <div class="progress-track"><div class="progress-fill" style="width: 100%; background: #10b981;"></div></div>
+                                    </td>
+                                    <td><span class="tag-badge tag-perfect">Perfect</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="dashboard-panel" style="margin-bottom: 0;">
+                        <div class="panel-header">
+                            <h3>Recent Absences</h3>
+                        </div>
+                        <p style="font-size: 0.8rem; color: var(--gray); margin-top: -0.75rem; margin-bottom: 0.5rem;">Classes you have missed recently</p>
+                        <div class="absence-item">
+                            <span class="absence-icon"><i class="fas fa-user-times"></i></span>
+                            <div class="absence-info">
+                                <strong>Physical Sciences</strong>
+                                <p>You missed a mandatory lab session. Attendance is now at critical level (68%).</p>
+                                <span class="absence-time">Yesterday, 01:30 PM</span>
+                            </div>
+                        </div>
+                        <div class="absence-item">
+                            <span class="absence-icon"><i class="fas fa-user-times"></i></span>
+                            <div class="absence-info">
+                                <strong>IsiZulu First Additional Language</strong>
+                                <p>Absent without prior notice.</p>
+                                <span class="absence-time">Mon, 12 Aug, 09:30 AM</span>
+                            </div>
+                        </div>
+                        <div class="absence-item" style="border-bottom: none;">
+                            <span class="absence-icon"><i class="fas fa-user-times"></i></span>
+                            <div class="absence-info">
+                                <strong>Geography</strong>
+                                <p>Absent without prior notice.</p>
+                                <span class="absence-time">Mon, 12 Aug, 11:00 AM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        function updateStaffDateTime() {
+            const now = new Date();
+            const dateEl = document.getElementById('staffDate');
+            const timeEl = document.getElementById('staffTime');
+            if (dateEl) {
+                dateEl.textContent = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+            }
+            if (timeEl) {
+                timeEl.textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+            }
+        }
+        updateStaffDateTime();
+        setInterval(updateStaffDateTime, 1000);
+    </script>
+</body>
+</html>

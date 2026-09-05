@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="../public/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academics - Mbambangwe High School</title>
+    <meta name="description" content="Discover the academic curriculum, subjects, and grade structures at Mbambangwe High School.">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="logo"><img src="../public/logo.png" alt="Mbambangwe High School logo" class="logo-img">Mbambangwe<span>High</span></a>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="admissions.html">Admissions</a></li>
+            <li><a href="academics.html">Academics</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="activities.html">Activities</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+    <!-- Academics Page -->
+    <section class="academics-page" style="margin-top: 6rem;">
+        <div class="section-title">
+            <h2>Academics</h2>
+            <p>Comprehensive education for future leaders</p>
+        </div>
+
+        <div class="grade-tabs" id="gradeTabs">
+            <button type="button" class="grade-tab active" data-grade="8">Grade 8</button>
+            <button type="button" class="grade-tab" data-grade="9">Grade 9</button>
+            <button type="button" class="grade-tab" data-grade="10">Grade 10</button>
+            <button type="button" class="grade-tab" data-grade="11">Grade 11</button>
+            <button type="button" class="grade-tab" data-grade="12">Grade 12</button>
+        </div>
+
+        <div id="streamSelectWrap" style="display:none; align-items:center; gap:0.75rem; margin: 1.5rem 0;">
+            <label for="streamSelect" style="font-weight:600; color:var(--navy);">Choose Stream:</label>
+            <select id="streamSelect" style="padding: 0.5rem 0.75rem; border: 1px solid #ddd; border-radius: 5px; font-family: inherit; font-size: 0.95rem;">
+                <option value="science">🔬 Science Stream (STEM / Medical / Engineering)</option>
+                <option value="commerce">📊 Commerce Stream (Business / Finance / Law)</option>
+                <option value="general">🌍 General Stream (Humanities / Social Sciences / Arts)</option>
+            </select>
+        </div>
+
+        <div class="subjects-list" id="subjectsList">
+            <!-- Populated by script based on the selected grade tab (and stream, for Grades 10-12) -->
+        </div>
+
+        <div style="margin: 3rem 0;">
+            <h3 style="color: var(--navy); margin-bottom: 1rem;">Academic Calendar 2024</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem;">
+                <a href="javascript:void(0)" onclick="alert('Calendar PDF will be available soon.');" class="btn btn-secondary">Download Full Calendar (PDF)</a>
+                <a href="exam-timetable.html" class="btn btn-secondary">View Exam Timetable</a>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-brand"><img src="../public/logo.png" alt="Mbambangwe High School logo"><h3>Mbambangwe High School</h3></div>
+                <p>Empowering Minds, Building Futures since 1985</p>
+                <div style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9;">
+                    <p><i class="fas fa-map-marker-alt"></i> 10 83915 Track, Amanzimtoti</p>
+                    <p><i class="fas fa-phone"></i> 031 476 0246</p>
+                    <p><i class="fas fa-envelope"></i> mbambangwehigh@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="news.html">News & Events</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Portals</h3>
+                <ul>
+                    <li><a href="student-portal.html">Student Portal</a></li>
+                    <li><a href="parent-portal.html">Parent Portal</a></li>
+                    <li><a href="staff-portal.html">Staff Portal</a></li>
+
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to get updates</p>
+                <form style="margin-top: 1rem;">
+                    <input type="email" placeholder="Your email" style="padding: 0.5rem; width: 100%; margin-bottom: 0.5rem;" required>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Mbambangwe High School. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // Grade 8-9: General Education Phase - same 9 compulsory subjects for everyone.
+        const generalPhaseSubjects = [
+            { icon: 'fa-book', name: 'Home Language (e.g., English or Afrikaans)' },
+            { icon: 'fa-language', name: 'First Additional Language (e.g., Afrikaans, isiZulu, or isiXhosa)' },
+            { icon: 'fa-calculator', name: 'Mathematics' },
+            { icon: 'fa-flask', name: 'Natural Sciences (Biology, Physics, Chemistry)' },
+            { icon: 'fa-globe', name: 'Social Sciences (History & Geography)' },
+            { icon: 'fa-coins', name: 'Economic and Management Sciences (EMS)' },
+            { icon: 'fa-cogs', name: 'Technology' },
+            { icon: 'fa-palette', name: 'Creative Arts' },
+            { icon: 'fa-heartbeat', name: 'Life Orientation' }
+        ];
+
+        // Grades 10-12: FET Phase - 4 compulsory + 3 elective subjects per stream.
+        const fetStreamSubjects = {
+            science: [
+                { icon: 'fa-book', name: 'Home Language' },
+                { icon: 'fa-language', name: 'First Additional Language' },
+                { icon: 'fa-calculator', name: 'Mathematics (Pure)' },
+                { icon: 'fa-heartbeat', name: 'Life Orientation' },
+                { icon: 'fa-flask', name: 'Physical Sciences (Physics & Chemistry)' },
+                { icon: 'fa-leaf', name: 'Life Sciences (Biology)' },
+                { icon: 'fa-list-alt', name: 'Elective: Information Technology, CAT, Geography, or Agricultural Sciences' }
+            ],
+            commerce: [
+                { icon: 'fa-book', name: 'Home Language' },
+                { icon: 'fa-language', name: 'First Additional Language' },
+                { icon: 'fa-calculator', name: 'Mathematics (Pure) or Mathematical Literacy' },
+                { icon: 'fa-heartbeat', name: 'Life Orientation' },
+                { icon: 'fa-file-invoice-dollar', name: 'Accounting' },
+                { icon: 'fa-briefcase', name: 'Business Studies' },
+                { icon: 'fa-list-alt', name: 'Elective: Economics, Geography, or CAT' }
+            ],
+            general: [
+                { icon: 'fa-book', name: 'Home Language' },
+                { icon: 'fa-language', name: 'First Additional Language' },
+                { icon: 'fa-calculator', name: 'Mathematical Literacy or Mathematics' },
+                { icon: 'fa-heartbeat', name: 'Life Orientation' },
+                { icon: 'fa-history', name: 'History' },
+                { icon: 'fa-globe', name: 'Geography' },
+                { icon: 'fa-list-alt', name: 'Elective: Tourism, Religious Studies, Visual Arts, Dramatic Arts, or Hospitality Studies' }
+            ]
+        };
+
+        function renderList(subjects) {
+            const list = document.getElementById('subjectsList');
+            if (!list) return;
+            list.innerHTML = subjects.map(s => `
+                <div class="subject-item">
+                    <i class="fas ${s.icon}"></i>
+                    <span>${s.name}</span>
+                </div>
+            `).join('');
+        }
+
+        function renderSubjects(grade) {
+            const streamWrap = document.getElementById('streamSelectWrap');
+            const streamSelect = document.getElementById('streamSelect');
+            const isFetPhase = ['10', '11', '12'].includes(grade);
+            streamWrap.style.display = isFetPhase ? 'flex' : 'none';
+            if (isFetPhase) {
+                renderList(fetStreamSubjects[streamSelect.value]);
+            } else {
+                renderList(generalPhaseSubjects);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const tabs = document.querySelectorAll('#gradeTabs .grade-tab');
+            let currentGrade = (document.querySelector('#gradeTabs .grade-tab.active') || tabs[0]).dataset.grade;
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    currentGrade = tab.dataset.grade;
+                    renderSubjects(currentGrade);
+                });
+            });
+
+            const streamSelect = document.getElementById('streamSelect');
+            if (streamSelect) {
+                streamSelect.addEventListener('change', () => renderSubjects(currentGrade));
+            }
+
+            renderSubjects(currentGrade);
+        });
+    </script>
+</body>
+</html>
+
+
+
+

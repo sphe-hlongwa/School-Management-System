@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="../public/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Mbambangwe High School</title>
+    <meta name="description" content="Admin dashboard for Mbambangwe High School - manage students, staff, fees, attendance and academics.">
+
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+
+    <div class="staff-shell">
+
+        <!-- Sidebar -->
+        <aside class="staff-sidebar">
+            <img src="../public/logo.png" alt="Mbambangwe High School logo" class="sidebar-logo">
+            <nav class="sidebar-nav">
+                <a href="#" class="sidebar-icon active" title="Dashboard"><i class="fas fa-th-large"></i></a>
+                <a href="#stat-cards" class="sidebar-icon" title="Students"><i class="fas fa-user-graduate"></i></a>
+                <a href="#stat-cards" class="sidebar-icon" title="Teachers"><i class="fas fa-chalkboard-teacher"></i></a>
+                <a href="#stat-cards" class="sidebar-icon" title="Staff"><i class="fas fa-users"></i></a>
+                <a href="#fees-section" class="sidebar-icon" title="Fees"><i class="fas fa-wallet"></i></a>
+                <a href="#attendance-section" class="sidebar-icon" title="Attendance"><i class="fas fa-clipboard-check"></i></a>
+                <a href="academics.html" class="sidebar-icon" title="Academics"><i class="fas fa-book-open"></i></a>
+                <a href="#class-routine" class="sidebar-icon" title="Class Routine"><i class="fas fa-calendar-alt"></i></a>
+                <a href="#notice-board" class="sidebar-icon" title="Notice Board"><i class="fas fa-bullhorn"></i></a>
+                <a href="#activities-section" class="sidebar-icon" title="Reports"><i class="fas fa-chart-bar"></i></a>
+                <a href="contact.html" class="sidebar-icon" title="Messages"><i class="fas fa-envelope"></i></a>
+                <a href="javascript:void(0)" class="sidebar-icon" title="Settings" onclick="alert('Settings panel coming soon.');"><i class="fas fa-cog"></i></a>
+            </nav>
+            <a href="admin-portal.html" class="sidebar-icon sidebar-logout" title="Log out" onclick="if(window.MHSAuth){MHSAuth.clearSession();}"><i class="fas fa-sign-out-alt"></i></a>
+        </aside>
+
+        <!-- Main column -->
+        <div class="staff-main">
+
+            <!-- Top bar -->
+            <header class="staff-topbar">
+                <div class="staff-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search">
+                </div>
+                <div class="staff-datetime">
+                    <strong id="staffDate">Loading date...</strong>
+                    <span id="staffTime">--:--:--</span>
+                </div>
+                <div class="staff-topbar-right">
+                    <div class="year-select"><i class="fas fa-calendar-alt"></i> Academic Year: 2025 / 2026</div>
+                    <a href="javascript:void(0)" class="topbar-icon-btn" title="Notifications" onclick="alert('You have no new notifications.');"><i class="fas fa-bell"></i><span class="dot"></span></a>
+                    <a href="contact.html" class="topbar-icon-btn" title="Messages"><i class="fas fa-comment-dots"></i></a>
+                    <div class="topbar-avatar"><i class="fas fa-user-shield"></i></div>
+                </div>
+            </header>
+
+            <div class="staff-content">
+
+                <!-- Header + actions -->
+                <div class="admin-header-row">
+                    <div>
+                        <h2 class="staff-breadcrumb">Admin Dashboard</h2>
+                        <p class="staff-breadcrumb-trail">Dashboard / Admin Section / Admin Dashboard</p>
+                    </div>
+                    <div class="admin-header-actions">
+                        <a href="javascript:void(0)" class="btn-sm btn-navy-outline" onclick="alert('Student registration form coming soon.');"><i class="fas fa-user-plus"></i> Add New Student</a>
+                        <a href="javascript:void(0)" class="btn-sm btn-gold" onclick="document.getElementById('fees-section').scrollIntoView({behavior:'smooth'});"><i class="fas fa-file-invoice-dollar"></i> Fees Details</a>
+                    </div>
+                </div>
+
+                <!-- Alert banner -->
+                <div class="alert-banner" id="paymentAlert">
+                    <div class="alert-left"><i class="fas fa-check-circle"></i> Thandiwe Nkosi, Grade 9C has paid fees for "Term 2"</div>
+                    <button type="button" class="alert-close" onclick="document.getElementById('paymentAlert').style.display='none';"><i class="fas fa-times"></i></button>
+                </div>
+
+                <!-- Welcome banner -->
+                <div class="welcome-banner" style="margin-bottom: 1.5rem;">
+                    <h2>Welcome Back, <span id="staffGreetName">Mr. Sithole</span></h2>
+                    <p>Have a good day at work.</p>
+                    <div class="notice-line"><i class="fas fa-info-circle"></i> Updated recently on 3 Sep 2026</div>
+                </div>
+
+                <!-- Stat cards -->
+                <div class="stat-cards-row" id="stat-cards">
+                    <div class="stat-card">
+                        <div class="stat-card-top">
+                            <span class="stat-icon qi-navy"><i class="fas fa-user-graduate"></i></span>
+                            <div>
+                                <strong>2,148</strong>
+                                <span>Total Students</span>
+                            </div>
+                        </div>
+                        <div class="stat-card-foot">
+                            <span>Active: 2,131 &middot; Inactive: 17</span>
+                            <a href="javascript:void(0)" onclick="alert('Showing all students.');">View all</a>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-top">
+                            <span class="stat-icon qi-gold"><i class="fas fa-chalkboard-teacher"></i></span>
+                            <div>
+                                <strong>176</strong>
+                                <span>Total Teachers</span>
+                            </div>
+                        </div>
+                        <div class="stat-card-foot">
+                            <span>Active: 168 &middot; Inactive: 8</span>
+                            <a href="javascript:void(0)" onclick="alert('Showing all teachers.');">View all</a>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-top">
+                            <span class="stat-icon qi-green"><i class="fas fa-users"></i></span>
+                            <div>
+                                <strong>94</strong>
+                                <span>Total Staff</span>
+                            </div>
+                        </div>
+                        <div class="stat-card-foot">
+                            <span>Active: 91 &middot; Inactive: 3</span>
+                            <a href="javascript:void(0)" onclick="alert('Showing all staff.');">View all</a>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-card-top">
+                            <span class="stat-icon qi-red"><i class="fas fa-book"></i></span>
+                            <div>
+                                <strong>58</strong>
+                                <span>Total Subjects</span>
+                            </div>
+                        </div>
+                        <div class="stat-card-foot">
+                            <span>Active: 56 &middot; Inactive: 2</span>
+                            <a href="javascript:void(0)" onclick="alert('Showing all subjects.');">View all</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Schedules / Attendance / Quick Links + Class Routine -->
+                <div class="staff-analytics-row">
+
+                    <div class="dashboard-panel" style="margin-bottom: 0;">
+                        <h3 style="color: var(--navy); margin-bottom: 0.5rem;">Schedules</h3>
+                        <p style="font-size: 0.8rem; color: var(--gray); margin-bottom: 1rem;">September 2026</p>
+                        <div class="mini-calendar-grid">
+                            <div class="cal-dow">S</div><div class="cal-dow">M</div><div class="cal-dow">T</div><div class="cal-dow">W</div><div class="cal-dow">T</div><div class="cal-dow">F</div><div class="cal-dow">S</div>
+                            <div class="cal-day muted"></div><div class="cal-day muted"></div>
+                            <div class="cal-day">1</div><div class="cal-day">2</div><div class="cal-day">3</div><div class="cal-day">4</div>
+                            <div class="cal-day active">5</div>
+                            <div class="cal-day">6</div><div class="cal-day">7</div><div class="cal-day">8</div><div class="cal-day">9</div>
+                            <div class="cal-day highlight">10</div>
+                            <div class="cal-day">11</div>
+                            <div class="cal-day highlight">12</div>
+                            <div class="cal-day">13</div><div class="cal-day">14</div><div class="cal-day">15</div><div class="cal-day">16</div><div class="cal-day">17</div><div class="cal-day">18</div><div class="cal-day">19</div>
+                            <div class="cal-day">20</div><div class="cal-day">21</div><div class="cal-day">22</div><div class="cal-day">23</div><div class="cal-day">24</div><div class="cal-day">25</div><div class="cal-day">26</div>
+                            <div class="cal-day">27</div><div class="cal-day">28</div><div class="cal-day">29</div><div class="cal-day">30</div>
+                        </div>
+
+                        <h4 style="color: var(--navy); font-size: 0.95rem; margin: 1.5rem 0 0.25rem;">Upcoming Events</h4>
+                        <div class="upcoming-events-list">
+                            <div class="event-item">
+                                <div>
+                                    <strong>Parents, Teacher Meet</strong>
+                                    <span class="event-meta"><i class="fas fa-calendar"></i> 10 Sep 2026 &middot; 09:00 - 12:00</span>
+                                </div>
+                            </div>
+                            <div class="event-item alt">
+                                <div>
+                                    <strong>Vacation Meeting</strong>
+                                    <span class="event-meta"><i class="fas fa-calendar"></i> 14 Sep 2026</span>
+                                </div>
+                            </div>
+                            <div class="event-item alt2">
+                                <div>
+                                    <strong>Staff Meeting</strong>
+                                    <span class="event-meta"><i class="fas fa-calendar"></i> 17 Sep 2026</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-panel" id="attendance-section" style="margin-bottom: 0;">
+                        <div class="panel-header">
+                            <h3>Attendance</h3>
+                            <span class="panel-filter"><i class="fas fa-calendar-alt"></i> Today</span>
+                        </div>
+                        <div class="role-tabs">
+                            <span class="active">Students</span>
+                            <span>Teachers</span>
+                            <span>Staff</span>
+                        </div>
+                        <div class="attendance-summary" style="margin-top: 0; margin-bottom: 1rem;">
+                            <div><strong>19</strong><span>Emergency</span></div>
+                            <div><strong>11</strong><span>Medical</span></div>
+                            <div><strong>2</strong><span>Absent</span></div>
+                            <div><strong>1</strong><span>Late</span></div>
+                        </div>
+                        <div class="donut-wrap">
+                            <div class="donut-chart" style="background: conic-gradient(var(--navy) 0% 97%, #ef4444 97% 100%);">
+                                <div class="donut-center">
+                                    <small>Present</small>
+                                    <strong>2,115</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="working-days-note">Absent today: <strong>33 Students</strong></p>
+                        <a href="javascript:void(0)" class="panel-filter" style="display:block; text-align:center; margin-top: 0.5rem;" onclick="alert('Showing full attendance register.');">View All Student Attendance</a>
+                    </div>
+
+                    <div>
+                        <div class="dashboard-panel" style="margin-bottom: 1.5rem;">
+                            <div class="panel-header">
+                                <h3>Quick Links</h3>
+                            </div>
+                            <div class="quick-links-grid cols-3">
+                                <a href="javascript:void(0)" class="quick-link-btn" onclick="document.getElementById('attendance-section').scrollIntoView({behavior:'smooth'});">
+                                    <span class="quick-link-icon qi-navy"><i class="fas fa-calendar-alt"></i></span>
+                                    Calendar
+                                </a>
+                                <a href="javascript:void(0)" class="quick-link-btn" onclick="alert('Exam results coming soon.');">
+                                    <span class="quick-link-icon qi-gold"><i class="fas fa-file-alt"></i></span>
+                                    Exam Result
+                                </a>
+                                <a href="javascript:void(0)" class="quick-link-btn" onclick="document.getElementById('attendance-section').scrollIntoView({behavior:'smooth'});">
+                                    <span class="quick-link-icon qi-green"><i class="fas fa-clipboard-check"></i></span>
+                                    Attendance
+                                </a>
+                                <a href="javascript:void(0)" class="quick-link-btn active-link" onclick="document.getElementById('fees-section').scrollIntoView({behavior:'smooth'});">
+                                    <span class="quick-link-icon qi-red"><i class="fas fa-wallet"></i></span>
+                                    Fees
+                                </a>
+                                <a href="javascript:void(0)" class="quick-link-btn" onclick="alert('Home works module coming soon.');">
+                                    <span class="quick-link-icon qi-navy"><i class="fas fa-book-open"></i></span>
+                                    Home Works
+                                </a>
+                                <a href="javascript:void(0)" class="quick-link-btn" onclick="document.getElementById('activities-section').scrollIntoView({behavior:'smooth'});">
+                                    <span class="quick-link-icon qi-gold"><i class="fas fa-chart-bar"></i></span>
+                                    Reports
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="dashboard-panel" id="class-routine" style="margin-bottom: 0;">
+                            <div class="panel-header">
+                                <h3>Class Routine</h3>
+                                <a href="javascript:void(0)" class="panel-filter" onclick="alert('Routine builder coming soon.');">Create New</a>
+                            </div>
+                            <div class="routine-item">
+                                <span class="routine-thumb"><i class="fas fa-file-alt"></i></span>
+                                <div class="routine-info">
+                                    <strong>October 2026</strong>
+                                    <span>October month class routine</span>
+                                </div>
+                                <button type="button" class="routine-download" onclick="alert('Download will be available soon.');">Download</button>
+                            </div>
+                            <div class="routine-item">
+                                <span class="routine-thumb"><i class="fas fa-file-alt"></i></span>
+                                <div class="routine-info">
+                                    <strong>Nov 2026</strong>
+                                    <span>Nov month class routine</span>
+                                </div>
+                                <button type="button" class="routine-download" onclick="alert('Download will be available soon.');">Download</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Best performer / Star student / Class wise performance -->
+                <div class="spotlight-row">
+                    <div class="spotlight-card sc-emerald">
+                        <div class="spotlight-card-head">
+                            Best Performer
+                            <span class="sc-nav-btn"><span><i class="fas fa-chevron-left"></i></span><span><i class="fas fa-chevron-right"></i></span></span>
+                        </div>
+                        <div class="spotlight-avatar"><i class="fas fa-user-tie"></i></div>
+                        <div>
+                            <h4>Lindiwe Mahlangu</h4>
+                            <p>Physics Teacher</p>
+                        </div>
+                    </div>
+                    <div class="spotlight-card sc-navy">
+                        <div class="spotlight-card-head">
+                            Star Student
+                            <span class="sc-nav-btn"><span><i class="fas fa-chevron-left"></i></span><span><i class="fas fa-chevron-right"></i></span></span>
+                        </div>
+                        <div class="spotlight-avatar"><i class="fas fa-user-graduate"></i></div>
+                        <div>
+                            <h4>Karabo Modise</h4>
+                            <p>Grade 12, A</p>
+                        </div>
+                        <span class="spotlight-score">98%</span>
+                    </div>
+                    <div class="dashboard-panel" style="margin-bottom: 0;">
+                        <div class="panel-header">
+                            <h3>Class Wise Performance</h3>
+                        </div>
+                        <div class="donut-wrap" style="margin: 0.5rem 0;">
+                            <div class="donut-chart" style="width:130px; height:130px; background: conic-gradient(var(--navy) 0% 95%, var(--gold) 95% 100%);">
+                                <div class="donut-chart" style="width:130px; height:130px;"></div>
+                                <div class="donut-center">
+                                    <small>Good</small>
+                                    <strong>95%</strong>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="perf-list">
+                            <div class="perf-list-item"><span>Top Students</span><strong>45</strong></div>
+                            <div class="perf-list-item"><span>Average Students</span><strong>11</strong></div>
+                            <div class="perf-list-item"><span>Below Average Students</span><strong>02</strong></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Fees Collection -->
+                <div class="fees-chart-row" id="fees-section">
+                    <div class="dashboard-panel" style="margin-bottom: 0;">
+                        <div class="panel-header">
+                            <h3>Fees Collection</h3>
+                            <span class="panel-filter"><i class="fas fa-calendar-alt"></i> Last 8 Quarters</span>
+                        </div>
+                        <div class="chart-legend">
+                            <span><span class="legend-dot" style="background:#e2e8f0;"></span> Total Fee</span>
+                            <span><span class="legend-dot" style="background:var(--navy);"></span> Collected Fee</span>
+                        </div>
+                        <div class="bar-chart">
+                            <div class="bar-col"><div class="bar-track"><div class="bar-fill" style="height: 78%;"></div></div><span class="bar-label">Q1 2025</span></div>
+                            <div class="bar-col"><div class="bar-track"><div class="bar-fill" style="height: 65%;"></div></div><span class="bar-label">Q2 2025</span></div>
+                            <div class="bar-col"><div class="bar-track"><div class="bar-fill" style="height: 82%;"></div></div><span class="bar-label">Q3 2025</span></div>
+                            <div class="bar-col"><div class="bar-track"><div class="bar-fill" style="height: 90%;"></div></div><span class="bar-label">Q4 2025</span></div>
+                            <div class="bar-col"><div class="bar-track"><div class="bar-fill" style="height: 70%;"></div></div><span class="bar-label">Q1 2026</span></div>
+                            <div class="bar-col"><div class="bar-track"><div class="bar-fill" style="height: 55%;"></div></div><span class="bar-label">Q2 2026</span></div>
+                            <div class="bar-col"><div class="bar-track"><div class="bar-fill" style="height: 88%;"></div></div><span class="bar-label">Q3 2026</span></div>
+                            <div class="bar-col"><div class="bar-track"><div class="bar-fill" style="height: 60%;"></div></div><span class="bar-label">Q4 2026</span></div>
+                        </div>
+                    </div>
+
+                    <div class="fees-mini-stats">
+                        <div class="mini-stat-card">
+                            <strong>R2,540,200</strong>
+                            <span>Total Fees Collected</span>
+                        </div>
+                        <div class="mini-stat-card">
+                            <strong>R48,650</strong>
+                            <span>Fine Collected till date</span>
+                        </div>
+                        <div class="mini-stat-card">
+                            <strong>312</strong>
+                            <span>Student Not Paid</span>
+                            <a href="javascript:void(0)" onclick="alert('Reminder sent to all unpaid students.');">Remind All</a>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-panel" style="margin-bottom: 0;">
+                        <div class="panel-header">
+                            <h3>Leave Requests</h3>
+                            <span class="panel-filter"><i class="fas fa-calendar-alt"></i> This Month</span>
+                        </div>
+                        <div class="leave-request-tabs">
+                            <span class="active">Students</span>
+                            <span>Teachers &amp; Staff</span>
+                        </div>
+                        <div class="leave-request-item">
+                            <span class="lr-avatar"><i class="fas fa-user"></i></span>
+                            <div class="lr-info">
+                                <div class="lr-name-row">Sipho Dube <span class="tag-badge tag-emergency">Emergency</span></div>
+                                <div class="lr-role">Physics Teacher</div>
+                                <div class="lr-dates">Leave: 12 - 13 Sep &middot; Apply on: 10 Sep</div>
+                            </div>
+                            <div class="lr-actions">
+                                <button type="button" class="icon-btn-circle accept" onclick="alert('Leave approved.');"><i class="fas fa-check"></i></button>
+                                <button type="button" class="icon-btn-circle decline" onclick="alert('Leave declined.');"><i class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="leave-request-item">
+                            <span class="lr-avatar"><i class="fas fa-user"></i></span>
+                            <div class="lr-info">
+                                <div class="lr-name-row">Bongani Radebe <span class="tag-badge tag-casual">Casual</span></div>
+                                <div class="lr-role">Accountant</div>
+                                <div class="lr-dates">Leave: 12 - 13 Sep &middot; Apply on: 11 Sep</div>
+                            </div>
+                            <div class="lr-actions">
+                                <button type="button" class="icon-btn-circle accept" onclick="alert('Leave approved.');"><i class="fas fa-check"></i></button>
+                                <button type="button" class="icon-btn-circle decline" onclick="alert('Leave declined.');"><i class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+                        <div class="leave-request-item" style="border-bottom: none;">
+                            <span class="lr-avatar"><i class="fas fa-user"></i></span>
+                            <div class="lr-info">
+                                <div class="lr-name-row">Nomvula Zikhali <span class="tag-badge tag-medical">Medical</span></div>
+                                <div class="lr-role">Grade 10, B</div>
+                                <div class="lr-dates">Leave: 14 - 16 Sep &middot; Apply on: 9 Sep</div>
+                            </div>
+                            <div class="lr-actions">
+                                <button type="button" class="icon-btn-circle accept" onclick="alert('Leave approved.');"><i class="fas fa-check"></i></button>
+                                <button type="button" class="icon-btn-circle decline" onclick="alert('Leave declined.');"><i class="fas fa-times"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick nav pills -->
+                <div class="pill-links-row">
+                    <a href="javascript:void(0)" class="pill-link" onclick="alert('Human Resources module coming soon.');"><span class="pill-icon"><i class="fas fa-id-badge"></i></span> Human Resources <i class="fas fa-chevron-right"></i></a>
+                    <a href="javascript:void(0)" class="pill-link" onclick="alert('New Events module coming soon.');"><span class="pill-icon"><i class="fas fa-bullhorn"></i></span> New Events <i class="fas fa-chevron-right"></i></a>
+                    <a href="javascript:void(0)" class="pill-link" onclick="alert('Membership Plans coming soon.');"><span class="pill-icon"><i class="fas fa-id-card"></i></span> Membership Plans <i class="fas fa-chevron-right"></i></a>
+                    <a href="javascript:void(0)" class="pill-link" onclick="alert('Finance & Accounts coming soon.');"><span class="pill-icon"><i class="fas fa-coins"></i></span> Finance &amp; Accounts <i class="fas fa-chevron-right"></i></a>
+                    <a href="javascript:void(0)" class="pill-link" onclick="document.getElementById('fees-section').scrollIntoView({behavior:'smooth'});"><span class="pill-icon"><i class="fas fa-wallet"></i></span> Fees Collection <i class="fas fa-chevron-right"></i></a>
+                    <a href="academics.html" class="pill-link"><span class="pill-icon"><i class="fas fa-graduation-cap"></i></span> Academic &amp; Classes <i class="fas fa-chevron-right"></i></a>
+                </div>
+
+                <!-- Notice Board / Activities -->
+                <div class="admin-footer-row-2">
+                    <div class="dashboard-panel" id="notice-board" style="margin-bottom: 0;">
+                        <div class="panel-header">
+                            <h3>Notice Board</h3>
+                            <div style="display:flex; gap:0.75rem;">
+                                <a href="javascript:void(0)" class="panel-filter" onclick="alert('New notice form coming soon.');">Add New</a>
+                                <a href="javascript:void(0)" class="panel-filter" onclick="alert('Showing all notices.');">View All</a>
+                            </div>
+                        </div>
+                        <div class="notice-item">
+                            <div class="notice-item-check">
+                                <input type="checkbox">
+                                <div>
+                                    <strong>World Environment Day Program</strong>
+                                    <span>Added on: 21 Aug 2026</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="notice-item">
+                            <div class="notice-item-check">
+                                <input type="checkbox">
+                                <div>
+                                    <strong>New Syllabus Instructions</strong>
+                                    <span>Added on: 11 Aug 2026</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="notice-item">
+                            <div class="notice-item-check">
+                                <input type="checkbox">
+                                <div>
+                                    <strong>Exam Preparation Notification</strong>
+                                    <span>Added on: 18 Aug 2026</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="notice-item" style="border-bottom: none;">
+                            <div class="notice-item-check">
+                                <input type="checkbox">
+                                <div>
+                                    <strong>Online Classes Preparation</strong>
+                                    <span>Added on: 24 Aug 2026</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-panel" id="activities-section" style="margin-bottom: 0;">
+                        <div class="panel-header">
+                            <h3>Activities</h3>
+                            <span class="panel-filter"><i class="fas fa-calendar-alt"></i> 2025 - 2026</span>
+                        </div>
+                        <div class="activity-tabs">
+                            <span>Library</span>
+                            <span>Transports</span>
+                            <span class="active">Reports</span>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-file-alt"></i>
+                            <div>
+                                <strong>Grade 9, A - 1st Quarter Result</strong>
+                                <span>Uploaded on: 25 Aug 2026</span>
+                            </div>
+                            <a href="javascript:void(0)" class="download-icon" onclick="alert('Download will be available soon.');"><i class="fas fa-download"></i></a>
+                        </div>
+                        <div class="activity-item">
+                            <i class="fas fa-file-alt"></i>
+                            <div>
+                                <strong>Grade 9, B - 2nd Quarter Result</strong>
+                                <span>Uploaded on: 21 Aug 2026</span>
+                            </div>
+                            <a href="javascript:void(0)" class="download-icon" onclick="alert('Download will be available soon.');"><i class="fas fa-download"></i></a>
+                        </div>
+                        <div class="activity-item" style="border-bottom: none;">
+                            <i class="fas fa-file-alt"></i>
+                            <div>
+                                <strong>Grade 8, C - Assignment</strong>
+                                <span>Updated weekly</span>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;" onclick="alert('Upload feature coming soon.');">Upload New Report</button>
+                    </div>
+                </div>
+
+                <!-- Todo / Inbox / Student Activity -->
+                <div class="admin-footer-row-3">
+                    <div class="dashboard-panel" style="margin-bottom: 0;">
+                        <div class="panel-header">
+                            <h3>Todo</h3>
+                            <span class="panel-filter"><i class="fas fa-calendar-alt"></i> Today</span>
+                        </div>
+                        <div class="todo-item done">
+                            <input type="checkbox" checked>
+                            <div>
+                                <strong>Send Fees Reminder to All Students</strong>
+                                <span>01:00 PM</span>
+                            </div>
+                        </div>
+                        <div class="todo-item">
+                            <input type="checkbox">
+                            <div>
+                                <strong>Create Routine for New Staff</strong>
+                                <span>04:50 PM</span>
+                            </div>
+                        </div>
+                        <div class="todo-item">
+                            <input type="checkbox">
+                            <div>
+                                <strong>Extra Class Info to Students &amp; Teachers</strong>
+                                <span>04:55 PM</span>
+                            </div>
+                        </div>
+                        <div class="todo-item" style="border-bottom: none;">
+                            <input type="checkbox">
+                            <div>
+                                <strong>Fees Creation for Upcoming Academic Year</strong>
+                                <span>05:30 PM</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-panel" style="margin-bottom: 0;">
+                        <div class="panel-header">
+                            <h3>Inbox</h3>
+                            <a href="contact.html" class="panel-filter">View All</a>
+                        </div>
+                        <div class="inbox-item">
+                            <span class="inbox-avatar" style="background: var(--gold-light);">A</span>
+                            <div class="inbox-body">
+                                <div class="inbox-top"><strong>Adam Lee</strong><span>05 Sep</span></div>
+                                <p class="inbox-snippet">After you've generated your first response, you might realize it's not quite perfect...</p>
+                            </div>
+                        </div>
+                        <div class="inbox-item unread">
+                            <span class="inbox-avatar" style="background: #10b981;">T</span>
+                            <div class="inbox-body">
+                                <div class="inbox-top"><strong>Taphina Mnisi</strong><span>03 Sep</span></div>
+                                <p class="inbox-snippet">Edit your email copy for the parents' newsletter and send for review.</p>
+                            </div>
+                        </div>
+                        <div class="inbox-item" style="border-bottom: none;">
+                            <span class="inbox-avatar" style="background: var(--navy-light);">H</span>
+                            <div class="inbox-body">
+                                <div class="inbox-top"><strong>Hendrita Vilakazi</strong><span>02 Sep</span></div>
+                                <p class="inbox-snippet">Can you confirm the venue for the prize-giving ceremony?</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-panel" style="margin-bottom: 0;">
+                        <div class="panel-header">
+                            <h3>Student Activity</h3>
+                        </div>
+                        <div class="student-activity-item">
+                            <span class="sa-avatar"><i class="fas fa-trophy"></i></span>
+                            <div class="sa-body">
+                                <strong>1st place in "Chess"</strong>
+                                <span>This event took place in our school</span>
+                            </div>
+                            <span class="sa-time">A day ago</span>
+                        </div>
+                        <div class="student-activity-item">
+                            <span class="sa-avatar"><i class="fas fa-chess-board"></i></span>
+                            <div class="sa-body">
+                                <strong>Participated in "Carrom"</strong>
+                                <span>Justin Zwane participated in "Carrom"</span>
+                            </div>
+                            <span class="sa-time">4 weeks ago</span>
+                        </div>
+                        <div class="student-activity-item">
+                            <span class="sa-avatar"><i class="fas fa-globe"></i></span>
+                            <div class="sa-body">
+                                <strong>International Conference</strong>
+                                <span>Attended an international conference</span>
+                            </div>
+                            <span class="sa-time">2 weeks ago</span>
+                        </div>
+                        <div class="student-activity-item" style="border-bottom: none;">
+                            <span class="sa-avatar"><i class="fas fa-trophy"></i></span>
+                            <div class="sa-body">
+                                <strong>1st place in "Tennis"</strong>
+                                <span>This event took place in our school</span>
+                            </div>
+                            <span class="sa-time">4 weeks ago</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/auth.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        function updateStaffDateTime() {
+            const now = new Date();
+            const dateEl = document.getElementById('staffDate');
+            const timeEl = document.getElementById('staffTime');
+            if (dateEl) {
+                dateEl.textContent = now.toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
+            }
+            if (timeEl) {
+                timeEl.textContent = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+            }
+            const heading = document.querySelector('.welcome-banner h2');
+            if (heading) {
+                const hour = now.getHours();
+                let greeting = 'Good Morning,';
+                if (hour >= 12 && hour < 17) greeting = 'Good Afternoon,';
+                else if (hour >= 17) greeting = 'Good Evening,';
+                heading.childNodes[0].textContent = greeting + ' ';
+            }
+        }
+        updateStaffDateTime();
+        setInterval(updateStaffDateTime, 1000);
+    </script>
+</body>
+</html>

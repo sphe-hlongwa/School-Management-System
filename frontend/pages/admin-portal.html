@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="../public/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Portal - Mbambangwe High School</title>
+    <meta name="description" content="Administration portal for Mbambangwe High School management.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <style>
+        .portal-login {
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(160deg, #050e1d 0%, #0F172A 50%, #0d1e38 100%);
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .portal-login::before {
+            content: '';
+            position: absolute;
+            top: 20%;
+            right: 10%;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 1px solid rgba(212,175,55,0.1);
+            pointer-events: none;
+        }
+        .portal-login::after {
+            content: '';
+            position: absolute;
+            top: 15%;
+            right: 5%;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            border: 1px solid rgba(212,175,55,0.05);
+            pointer-events: none;
+        }
+        .login-card {
+            background: rgba(255,255,255,0.97);
+            padding: 3rem 3.5rem;
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(212,175,55,0.15);
+            width: 100%;
+            max-width: 440px;
+            position: relative;
+            z-index: 10;
+            animation: slideUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+        .portal-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            color: var(--navy);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.3rem 0.9rem;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+        .portal-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            color: var(--navy);
+            font-size: 1.5rem;
+            font-weight: 800;
+            text-decoration: none;
+            margin-bottom: 0.75rem;
+        }
+        .portal-logo img {
+            height: 44px;
+            width: auto;
+            display: block;
+        }
+        .portal-logo span { color: var(--gold); }
+        .login-card h2 {
+            color: var(--navy);
+            font-size: 1.75rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+        }
+        .subtitle {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+        .form-group { margin-bottom: 1.25rem; }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            color: var(--navy);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .input-wrapper { position: relative; }
+        .input-wrapper i.icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+            font-size: 0.9rem;
+            pointer-events: none;
+        }
+        .input-wrapper input {
+            width: 100%;
+            padding: 0.875rem 1rem 0.875rem 2.75rem;
+            border: 2px solid #e8edf4;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-family: 'Inter', sans-serif;
+            transition: all 0.2s;
+            background: #f8fafc;
+            color: var(--navy);
+        }
+        .input-wrapper input:focus {
+            outline: none;
+            border-color: var(--gold);
+            background: white;
+            box-shadow: 0 0 0 4px rgba(212,175,55,0.12);
+        }
+        .pw-toggle {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            color: var(--gray);
+            background: none;
+            border: none;
+            font-size: 0.9rem;
+            padding: 0;
+        }
+        .pw-toggle:hover { color: var(--navy); }
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.75rem;
+            font-size: 0.85rem;
+        }
+        .form-options label {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--gray);
+            cursor: pointer;
+            font-weight: 400;
+        }
+        .form-options a {
+            color: var(--navy);
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .form-options a:hover { color: var(--gold); }
+        .btn-login {
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(135deg, #b8860b, var(--gold));
+            color: var(--navy);
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+        .btn-login:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(212,175,55,0.4);
+            filter: brightness(1.05);
+        }
+        .security-note {
+            margin-top: 1.5rem;
+            padding: 0.75rem 1rem;
+            background: #fef9ec;
+            border: 1px solid #fde68a;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            color: #92400e;
+        }
+        .divider {
+            text-align: center;
+            color: var(--gray);
+            font-size: 0.85rem;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+        .divider::before, .divider::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 40%;
+            height: 1px;
+            background: #e8edf4;
+        }
+        .divider::before { left: 0; }
+        .divider::after { right: 0; }
+        .back-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.2s;
+        }
+        .back-link:hover { color: var(--navy); }
+        .top-nav-back {
+            position: fixed;
+            top: 1.5rem;
+            left: 1.5rem;
+            z-index: 100;
+        }
+        .top-nav-back a {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .top-nav-back a:hover { color: var(--gold); }
+        @media (max-width: 480px) { .login-card { padding: 2rem 1.5rem; } }
+    </style>
+</head>
+<body>
+    <div class="top-nav-back">
+        <a href="index.html"><i class="fas fa-arrow-left"></i> Back to School Site</a>
+    </div>
+
+    <div class="portal-login">
+        <div class="login-card">
+            <a href="index.html" class="portal-logo"><img src="../public/logo.png" alt="Mbambangwe High School logo">Mbambangwe<span>High</span></a>
+            <div class="portal-badge"><i class="fas fa-shield-alt"></i> Admin Portal</div>
+            <h2>Administration</h2>
+            <p class="subtitle">Restricted access — authorised administration personnel only.</p>
+
+            <form id="adminLoginForm">
+                <div class="login-error" id="adminLoginError" role="alert">
+                    <i class="fas fa-circle-exclamation"></i>
+                    <span id="adminLoginErrorText"></span>
+                </div>
+                <div class="form-group">
+                    <label for="adminEmail">Admin Email</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-envelope icon"></i>
+                        <input type="email" id="adminEmail" placeholder="admin@mbambangwehigh.co.za" required autocomplete="email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="adminPassword">Password</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-key icon"></i>
+                        <input type="password" id="adminPassword" placeholder="Enter your secure password" required autocomplete="current-password">
+                        <button type="button" class="pw-toggle" aria-label="Toggle password visibility" onclick="var inp=this.previousElementSibling; inp.type=inp.type==='password'?'text':'password'; this.querySelector('i').classList.toggle('fa-eye'); this.querySelector('i').classList.toggle('fa-eye-slash');"><i class="fas fa-eye"></i></button>
+                    </div>
+                </div>
+                <div class="form-options">
+                    <label><input type="checkbox" id="rememberAdmin"> Stay signed in</label>
+                    <a href="contact.html">Reset Password</a>
+                </div>
+                <button type="submit" class="btn-login" id="adminLoginBtn">
+                    <i class="fas fa-sign-in-alt"></i> Access System
+                </button>
+            </form>
+
+            <div class="security-note">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>Restricted area. Unauthorised access attempts are logged.</span>
+            </div>
+
+            <div class="divider">or</div>
+            <a href="index.html" class="back-link"><i class="fas fa-home"></i> Return to School Home</a>
+        </div>
+    </div>
+
+    <script src="../assets/js/auth.js"></script>
+    <script>
+        document.getElementById('adminLoginForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const btn = document.getElementById('adminLoginBtn');
+            const errorBox = document.getElementById('adminLoginError');
+            const errorText = document.getElementById('adminLoginErrorText');
+            const originalHTML = btn.innerHTML;
+
+            errorBox.style.display = 'none';
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying credentials...';
+            btn.disabled = true;
+
+            try {
+                await MHSAuth.login({
+                    endpoint: '/api/admin/login',
+                    body: {
+                        email: document.getElementById('adminEmail').value,
+                        password: document.getElementById('adminPassword').value
+                    },
+                    remember: document.getElementById('rememberAdmin').checked,
+                    role: 'admin'
+                });
+
+                btn.innerHTML = '<i class="fas fa-check"></i> Success! Redirecting...';
+                btn.style.background = 'linear-gradient(135deg,#10b981,#059669)';
+                btn.style.color = 'white';
+                setTimeout(() => {
+                    window.location.href = 'admin-dashboard.html';
+                }, 700);
+            } catch (err) {
+                errorText.textContent = err.message;
+                errorBox.style.display = 'flex';
+                btn.innerHTML = originalHTML;
+                btn.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>
+

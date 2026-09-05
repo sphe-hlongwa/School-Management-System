@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="icon" type="image/x-icon" href="../public/favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admissions - Mbambangwe High School</title>
+    <meta name="description" content="Information on how to apply and enroll your child at Mbambangwe High School for the upcoming academic year.">
+    
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <a href="index.html" class="logo"><img src="../public/logo.png" alt="Mbambangwe High School logo" class="logo-img">Mbambangwe<span>High</span></a>
+        <div class="hamburger">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="admissions.html">Admissions</a></li>
+            <li><a href="academics.html">Academics</a></li>
+            <li><a href="news.html">News</a></li>
+            <li><a href="activities.html">Activities</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main id="main-content">
+    <!-- Admissions Page -->
+    <section class="admissions-page reveal" style="margin-top: 6rem;">
+        <div class="section-title">
+            <h2>Admissions</h2>
+            <p>Join the Mbambangwe High School family</p>
+        </div>
+
+        <div class="deadline-grid">
+            <div class="deadline-card">
+                <h4>Early Application</h4>
+                <p class="date">May 15, 2024</p>
+            </div>
+            <div class="deadline-card">
+                <h4>Regular Application</h4>
+                <p class="date">July 30, 2024</p>
+            </div>
+            <div class="deadline-card">
+                <h4>Late Application</h4>
+                <p class="date">August 15, 2024</p>
+            </div>
+        </div>
+
+        <div class="admissions-form">
+            <h3 style="color: var(--navy); margin-bottom: 0.5rem;">Online Application Form</h3>
+            <p class="form-section-sub" style="margin-top: 0;">Please complete all required fields below. Fields marked with * are required.</p>
+
+            <form id="applicationForm">
+
+                <!-- Student Information -->
+                <h4 class="form-section-title">Student Information</h4>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="studentFirstName">Student Name *</label>
+                        <input type="text" id="studentFirstName" required>
+                        <span class="form-hint">First Name</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentLastName">&nbsp;</label>
+                        <input type="text" id="studentLastName" required>
+                        <span class="form-hint">Last Name</span>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="dob">Date of Birth *</label>
+                        <input type="date" id="dob" required>
+                        <span class="form-hint">Date</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">Age *</label>
+                        <input type="number" id="age" placeholder="ex. 23" min="0" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="placeOfBirth">Place of Birth *</label>
+                        <input type="text" id="placeOfBirth" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Gender *</label>
+                        <div class="radio-group">
+                            <label class="radio-option"><input type="radio" name="gender" value="Male" required> Male</label>
+                            <label class="radio-option"><input type="radio" name="gender" value="Female"> Female</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="studentPhone">Phone Number *</label>
+                        <input type="tel" id="studentPhone" placeholder="(000) 000-0000" required>
+                        <span class="form-hint">Please enter a valid phone number.</span>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentEmail">Email *</label>
+                        <input type="email" id="studentEmail" placeholder="example@example.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="address1">Address *</label>
+                    <input type="text" id="address1" required>
+                    <span class="form-hint">Street Address</span>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="address2">
+                    <span class="form-hint">Street Address Line 2</span>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" id="addressCity" required>
+                        <span class="form-hint">City</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="addressState" required>
+                        <span class="form-hint">State / Province</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="addressZip" required>
+                    <span class="form-hint">Postal / Zip Code</span>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="gradeLevel">Grade Level *</label>
+                        <input type="text" id="gradeLevel" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="schoolYear">School Year *</label>
+                        <input type="text" id="schoolYear" placeholder="e.g. 2025 - 2026" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="lastSchool">School Last Attended *</label>
+                    <input type="text" id="lastSchool" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="schoolAddress1">School Address *</label>
+                    <input type="text" id="schoolAddress1" required>
+                    <span class="form-hint">Street Address</span>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="schoolAddress2">
+                    <span class="form-hint">Street Address Line 2</span>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" id="schoolAddressCity" required>
+                        <span class="form-hint">City</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="schoolAddressState" required>
+                        <span class="form-hint">State / Province</span>
+                    </div>
+                </div>
+
+                <hr class="form-divider">
+
+                <!-- Parent/Guardian's Information -->
+                <h4 class="form-section-title">Parent/Guardian's Information</h4>
+
+                <p class="form-note" style="margin-top: -0.5rem;">Parent/Guardian's Name - Primary *</p>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" id="parent1First" required>
+                        <span class="form-hint">First Name</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="parent1Last" required>
+                        <span class="form-hint">Last Name</span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="parent1Occupation">Occupation</label>
+                        <input type="text" id="parent1Occupation">
+                    </div>
+                    <div class="form-group">
+                        <label for="parent1Phone">Phone Number *</label>
+                        <input type="tel" id="parent1Phone" placeholder="(000) 000-0000" required>
+                        <span class="form-hint">Please enter a valid phone number.</span>
+                    </div>
+                </div>
+
+                <hr class="form-divider">
+
+                <p class="form-note">Parent/Guardian's Name - Secondary</p>
+                <div class="form-row">
+                    <div class="form-group">
+                        <input type="text" id="parent2First">
+                        <span class="form-hint">First Name</span>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="parent2Last">
+                        <span class="form-hint">Last Name</span>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="parent2Occupation">Occupation</label>
+                        <input type="text" id="parent2Occupation">
+                    </div>
+                    <div class="form-group">
+                        <label for="parent2Phone">Phone Number</label>
+                        <input type="tel" id="parent2Phone" placeholder="(000) 000-0000">
+                        <span class="form-hint">Please enter a valid phone number.</span>
+                    </div>
+                </div>
+
+                <p class="form-note">In case of emergency, who will be notified? Please answer the fields below:</p>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Emergency Contact Person *</label>
+                        <div class="form-row" style="gap: 1rem;">
+                            <div>
+                                <input type="text" id="emergencyFirst" required>
+                                <span class="form-hint">First Name</span>
+                            </div>
+                            <div>
+                                <input type="text" id="emergencyLast" required>
+                                <span class="form-hint">Last Name</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="emergencyPhone">Emergency Phone Number *</label>
+                        <input type="tel" id="emergencyPhone" placeholder="(000) 000-0000" required>
+                        <span class="form-hint">Please enter a valid phone number.</span>
+                    </div>
+                </div>
+
+                <hr class="form-divider">
+
+                <!-- File Upload -->
+                <h4 class="form-section-title">File Upload</h4>
+                <p class="form-section-sub">2x2 Colored ID Picture, birth certificate, report card from the previous school, certificate of good moral, and medical clearance.</p>
+
+                <div class="form-group">
+                    <label>Upload *</label>
+                    <div class="upload-dropzone" id="uploadDropzone">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <span class="upload-text">Drag &amp; Drop Files Here</span>
+                        <p style="font-size: 0.85rem; margin-top: 0.5rem;">or click to browse</p>
+                        <input type="file" id="fileInput" multiple hidden>
+                    </div>
+                    <ul class="upload-filelist" id="uploadFileList"></ul>
+                </div>
+
+                <hr class="form-divider">
+
+                <!-- Health History -->
+                <h4 class="form-section-title">Health History</h4>
+
+                <div class="form-group">
+                    <label for="allergies">If the student have any allergies, please list them down below:</label>
+                    <textarea id="allergies" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="medications">Does the student currently taking any medications? If yes, please list them down below:</label>
+                    <textarea id="medications" rows="3"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="hospitalized">Was the student previously hospitalized or undergo any surgery?</label>
+                    <textarea id="hospitalized" rows="3"></textarea>
+                </div>
+
+                <hr class="form-divider">
+
+                <!-- Reminders -->
+                <h4 class="form-section-title">Reminders</h4>
+
+                <div class="reminders-box">
+                    <p><strong>TEST.</strong> The school required new students or a transferee to take an exam in order to get admitted to the school.</p>
+                    <p><strong>INTERVIEW.</strong> The school admin will conduct an interview with the student as part of the screening test.</p>
+                    <p><strong>REQUIREMENTS.</strong> It is important to pass and complete all requirements before school starts. Failure to do so may delay the student from coming to school.</p>
+                    <p><strong>MEDICAL CLEARANCE.</strong> The school required all students to have a yearly physical exam. For new students, medical clearance for their doctor or school doctor is required.</p>
+                    <p><strong>BEHAVIOR.</strong> A certificate of good moral is required in order to get admitted to this school. Please request it from the previous school as soon as possible.</p>
+                </div>
+
+                <label class="agreement-check">
+                    <input type="checkbox" id="agreeTerms" required>
+                    <span>I agree to <a href="#">terms &amp; conditions</a> provided by the school. I also certify that all information in this form is true and accurate. <span class="required-tag">* REQUIRED</span></span>
+                </label>
+
+                <hr class="form-divider">
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="dateSigned">Date Signed *</label>
+                        <input type="date" id="dateSigned" required>
+                        <span class="form-hint">Date</span>
+                    </div>
+                    <div class="form-group">
+                        <label>Parent/Guardian Signature *</label>
+                        <div class="signature-pad-wrapper">
+                            <canvas id="signaturePad" width="500" height="150"></canvas>
+                            <span class="signature-placeholder" id="signaturePlaceholder">Sign Here</span>
+                            <div class="signature-footer">
+                                <span class="powered-by">Draw your signature above</span>
+                                <button type="button" class="clear-btn" id="clearSignature">Clear</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="margin-top: 1rem;">Submit Application</button>
+            </form>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <h3 style="color: var(--navy); margin-bottom: 2rem;">Frequently Asked Questions</h3>
+            <div class="faq-item">
+                <div class="faq-question">
+                    What documents are required for application?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>You'll need: birth certificate, previous school reports, ID photos, proof of address, and immunization records.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    Is there an entrance examination?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, all applicants are required to take entrance exams in Mathematics and English. Dates are scheduled after application submission.</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    What is the tuition fee structure?
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Tuition varies by grade. Please contact our finance office for detailed fee structure and payment plan options.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <div class="footer-brand"><img src="../public/logo.png" alt="Mbambangwe High School logo"><h3>Mbambangwe High School</h3></div>
+                <p>Empowering Minds, Building Futures since 1985</p>
+                <div style="margin-top: 1rem; font-size: 0.9rem; opacity: 0.9;">
+                    <p><i class="fas fa-map-marker-alt"></i> 10 83915 Track, Amanzimtoti</p>
+                    <p><i class="fas fa-phone"></i> 031 476 0246</p>
+                    <p><i class="fas fa-envelope"></i> mbambangwehigh@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="admissions.html">Admissions</a></li>
+                    <li><a href="academics.html">Academics</a></li>
+                    <li><a href="news.html">News & Events</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Portals</h3>
+                <ul>
+                    <li><a href="student-portal.html">Student Portal</a></li>
+                    <li><a href="parent-portal.html">Parent Portal</a></li>
+                    <li><a href="staff-portal.html">Staff Portal</a></li>
+
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to get updates</p>
+                <form style="margin-top: 1rem;">
+                    <input type="email" placeholder="Your email" style="padding: 0.5rem; width: 100%; margin-bottom: 0.5rem;" required>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Subscribe</button>
+                </form>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Mbambangwe High School. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="../assets/js/main.js"></script>
+    <script>
+        // ===== File Upload (drag & drop + click to browse) =====
+        (function() {
+            const dropzone = document.getElementById('uploadDropzone');
+            const fileInput = document.getElementById('fileInput');
+            const fileList = document.getElementById('uploadFileList');
+            if (!dropzone || !fileInput || !fileList) return;
+
+            let files = [];
+
+            function renderFileList() {
+                fileList.innerHTML = '';
+                files.forEach((file, index) => {
+                    const li = document.createElement('li');
+                    const sizeKb = (file.size / 1024).toFixed(1);
+                    li.innerHTML = `<span><i class="fas fa-file-alt" style="color: var(--gold); margin-right: 0.5rem;"></i>${file.name} <span style="color: var(--gray); font-size: 0.8rem;">(${sizeKb} KB)</span></span><i class="fas fa-times-circle" data-index="${index}"></i>`;
+                    fileList.appendChild(li);
+                });
+            }
+
+            function addFiles(newFiles) {
+                Array.from(newFiles).forEach(f => files.push(f));
+                renderFileList();
+            }
+
+            dropzone.addEventListener('click', () => fileInput.click());
+            fileInput.addEventListener('change', (e) => addFiles(e.target.files));
+
+            ['dragenter', 'dragover'].forEach(evt => {
+                dropzone.addEventListener(evt, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    dropzone.classList.add('dragover');
+                });
+            });
+
+            ['dragleave', 'drop'].forEach(evt => {
+                dropzone.addEventListener(evt, (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    dropzone.classList.remove('dragover');
+                });
+            });
+
+            dropzone.addEventListener('drop', (e) => {
+                if (e.dataTransfer && e.dataTransfer.files) {
+                    addFiles(e.dataTransfer.files);
+                }
+            });
+
+            fileList.addEventListener('click', (e) => {
+                const icon = e.target.closest('.fa-times-circle');
+                if (icon) {
+                    const idx = parseInt(icon.getAttribute('data-index'), 10);
+                    files.splice(idx, 1);
+                    renderFileList();
+                }
+            });
+
+            window.__resetUploadDropzone = function() {
+                files = [];
+                renderFileList();
+            };
+        })();
+
+        // ===== Signature Pad =====
+        (function() {
+            const canvas = document.getElementById('signaturePad');
+            const placeholder = document.getElementById('signaturePlaceholder');
+            const clearBtn = document.getElementById('clearSignature');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+            let drawing = false;
+            let hasSignature = false;
+
+            function resizeCanvas() {
+                const ratio = window.devicePixelRatio || 1;
+                const rect = canvas.getBoundingClientRect();
+                canvas.width = rect.width * ratio;
+                canvas.height = rect.height * ratio;
+                ctx.scale(ratio, ratio);
+                ctx.strokeStyle = '#1e293b';
+                ctx.lineWidth = 2;
+                ctx.lineCap = 'round';
+                ctx.lineJoin = 'round';
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            function getPos(e) {
+                const rect = canvas.getBoundingClientRect();
+                if (e.touches && e.touches.length) {
+                    return { x: e.touches[0].clientX - rect.left, y: e.touches[0].clientY - rect.top };
+                }
+                return { x: e.clientX - rect.left, y: e.clientY - rect.top };
+            }
+
+            function start(e) {
+                drawing = true;
+                hasSignature = true;
+                if (placeholder) placeholder.style.opacity = '0';
+                const pos = getPos(e);
+                ctx.beginPath();
+                ctx.moveTo(pos.x, pos.y);
+                e.preventDefault();
+            }
+
+            function move(e) {
+                if (!drawing) return;
+                const pos = getPos(e);
+                ctx.lineTo(pos.x, pos.y);
+                ctx.stroke();
+                e.preventDefault();
+            }
+
+            function end() {
+                drawing = false;
+            }
+
+            canvas.addEventListener('mousedown', start);
+            canvas.addEventListener('mousemove', move);
+            window.addEventListener('mouseup', end);
+
+            canvas.addEventListener('touchstart', start, { passive: false });
+            canvas.addEventListener('touchmove', move, { passive: false });
+            canvas.addEventListener('touchend', end);
+
+            if (clearBtn) {
+                clearBtn.addEventListener('click', () => {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height);
+                    hasSignature = false;
+                    if (placeholder) placeholder.style.opacity = '1';
+                });
+            }
+
+            window.__resetSignaturePad = function() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                hasSignature = false;
+                if (placeholder) placeholder.style.opacity = '1';
+            };
+        })();
+
+        // ===== Reset custom widgets after successful submit =====
+        const applicationForm = document.getElementById('applicationForm');
+        if (applicationForm) {
+            applicationForm.addEventListener('submit', () => {
+                if (applicationForm.checkValidity()) {
+                    if (window.__resetUploadDropzone) window.__resetUploadDropzone();
+                    if (window.__resetSignaturePad) window.__resetSignaturePad();
+                }
+            });
+        }
+    </script>
+</body>
+</html>
+
+
+
