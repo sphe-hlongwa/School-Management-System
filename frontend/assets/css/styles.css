@@ -1634,7 +1634,7 @@ img {
 }
 
 .welcome-banner {
-    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+    background: var(--navy);
     border-radius: 16px;
     padding: 2rem 2.25rem;
     color: var(--white);
@@ -1643,17 +1643,6 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: center;
-}
-
-.welcome-banner::after {
-    content: '';
-    position: absolute;
-    top: -40%;
-    right: -10%;
-    width: 260px;
-    height: 260px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(212, 175, 55, 0.18) 0%, transparent 70%);
 }
 
 .welcome-banner h2 {
