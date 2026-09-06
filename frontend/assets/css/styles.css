@@ -1424,6 +1424,41 @@ img {
     background: var(--light-gray);
 }
 
+/* Fixed logo / sidebar toggle button - always visible, never hides with the sidebar */
+.sidebar-toggle-logo {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 72px;
+    height: 74px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--navy);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 210;
+    transition: background 0.25s ease;
+}
+
+.sidebar-toggle-logo img {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    transition: transform 0.2s ease;
+}
+
+.sidebar-toggle-logo:hover img {
+    transform: scale(1.06);
+}
+
+/* When the sidebar is collapsed, the logo's background matches the header (white) instead of the sidebar */
+.staff-shell.sidebar-collapsed .sidebar-toggle-logo {
+    background: var(--white);
+    box-shadow: var(--shadow);
+}
+
 /* Sidebar */
 .staff-sidebar {
     width: 72px;
@@ -1432,6 +1467,7 @@ img {
     flex-direction: column;
     align-items: center;
     padding: 1.25rem 0;
+    padding-top: 90px;
     gap: 0.5rem;
     position: fixed;
     top: 0;
@@ -1439,13 +1475,7 @@ img {
     height: 100vh;
     flex-shrink: 0;
     z-index: 100;
-}
-
-.staff-sidebar .sidebar-logo {
-    width: 42px;
-    height: 42px;
-    border-radius: 10px;
-    margin-bottom: 1rem;
+    transition: transform 0.3s ease;
 }
 
 .staff-sidebar .sidebar-nav {
@@ -1455,6 +1485,87 @@ img {
     gap: 0.35rem;
     flex: 1;
     overflow-y: auto;
+}
+
+/* Sidebar search (moved from topbar) */
+.sidebar-search-wrap {
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.sidebar-search-popover {
+    position: absolute;
+    top: 0;
+    left: calc(100% + 10px);
+    width: 220px;
+    background: var(--white);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.25);
+    padding: 0.6rem 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateX(-8px);
+    transition: all 0.18s ease;
+    z-index: 120;
+}
+
+.sidebar-search-popover.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0);
+}
+
+.sidebar-search-popover i {
+    color: var(--gray);
+    font-size: 0.85rem;
+}
+
+.sidebar-search-popover input {
+    border: none;
+    outline: none;
+    background: transparent;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    width: 100%;
+    color: var(--navy);
+}
+
+/* Sidebar collapse (toggled via logo click) */
+.staff-main {
+    transition: margin-left 0.3s ease;
+}
+
+.staff-shell.sidebar-collapsed .staff-sidebar {
+    transform: translateX(-100%);
+}
+
+.staff-shell.sidebar-collapsed .staff-main {
+    margin-left: 0;
+}
+
+.staff-shell.sidebar-collapsed .staff-topbar {
+    padding-left: calc(2rem + 72px);
+}
+
+/* Mobile backdrop shown behind an open sidebar on small screens */
+.sidebar-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(15, 23, 42, 0.45);
+    z-index: 90;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease;
+}
+
+.sidebar-backdrop.show {
+    display: block;
+    opacity: 1;
+    visibility: visible;
 }
 
 .sidebar-icon {
@@ -1469,6 +1580,15 @@ img {
     text-decoration: none;
     transition: all 0.2s;
     cursor: pointer;
+    background: transparent;
+    border: none;
+    font-family: inherit;
+}
+
+.sidebar-search-btn.sidebar-icon.show-active,
+.sidebar-search-wrap:has(.sidebar-search-popover.show) .sidebar-search-btn {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--white);
 }
 
 .sidebar-icon:hover {
@@ -1495,6 +1615,35 @@ img {
     flex: 1;
     min-width: 0;
     margin-left: 72px;
+}
+
+@media (max-width: 768px) {
+    /* On mobile the open sidebar overlays the content instead of pushing it,
+       and gets a shadow + backdrop since it floats above everything else */
+    .staff-shell:not(.sidebar-collapsed) .staff-main {
+        margin-left: 0;
+    }
+
+    .staff-shell:not(.sidebar-collapsed) .staff-topbar {
+        padding-left: calc(1rem + 72px);
+    }
+
+    .staff-shell.sidebar-collapsed .staff-topbar {
+        padding-left: calc(1rem + 72px);
+    }
+
+    .staff-shell:not(.sidebar-collapsed) .staff-sidebar {
+        box-shadow: 4px 0 24px rgba(15, 23, 42, 0.3);
+    }
+
+    .sidebar-search-popover {
+        left: 0;
+        top: calc(100% + 8px);
+    }
+
+    .staff-content {
+        padding: 1.25rem;
+    }
 }
 
 .staff-topbar {
@@ -1562,6 +1711,8 @@ img {
     font-size: 0.85rem;
     font-weight: 600;
     color: var(--navy);
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .topbar-icon-btn {
@@ -2587,20 +2738,6 @@ img {
         grid-template-columns: 1fr;
     }
 
-    .staff-sidebar {
-        width: 56px;
-    }
-
-    .staff-main {
-        margin-left: 56px;
-    }
-
-    .sidebar-icon {
-        width: 36px;
-        height: 36px;
-        font-size: 0.95rem;
-    }
-
     .staff-content {
         padding: 1.25rem;
     }
@@ -2630,12 +2767,60 @@ img {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    /* Header height matches the fixed logo button's height exactly, so
+       nothing inside the header ever grows the bar taller than the logo */
     .staff-topbar {
-        padding: 1rem 1.25rem;
+        height: 74px;
+        padding: 0 1.25rem;
+        box-sizing: border-box;
+        flex-wrap: nowrap;
+        gap: 0.5rem;
+        overflow: hidden;
     }
 
     .staff-datetime {
         display: none;
+    }
+
+    /* Demote the academic-year indicator to an icon-only chip - same size
+       and visual weight as the other action buttons - so the header content
+       always fits on one line without squeezing or wrapping */
+    .staff-topbar-right {
+        flex-wrap: nowrap;
+        gap: 0.5rem;
+        flex-shrink: 0;
+    }
+
+    .year-select {
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        justify-content: center;
+        border-radius: 50%;
+        flex-shrink: 0;
+        gap: 0;
+    }
+
+    .year-select i {
+        font-size: 0.95rem;
+    }
+
+    .year-select-label,
+    .year-select-value {
+        display: none;
+    }
+
+    .topbar-icon-btn {
+        width: 34px;
+        height: 34px;
+        flex-shrink: 0;
+    }
+
+    .topbar-avatar {
+        width: 36px;
+        height: 36px;
+        font-size: 0.95rem;
+        flex-shrink: 0;
     }
 
     .contact-grid {
@@ -2769,8 +2954,12 @@ img {
     }
 
     .staff-topbar {
-        padding: 1rem;
-        gap: 0.75rem;
+        padding: 0.85rem 0.85rem;
+        gap: 0.4rem;
+    }
+
+    .staff-topbar-right {
+        gap: 0.35rem;
     }
 }
 

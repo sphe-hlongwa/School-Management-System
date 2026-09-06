@@ -97,6 +97,69 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Dashboard sidebar toggle (admin/staff/parent/student portals)
+    const staffShell = document.querySelector('.staff-shell');
+    const sidebarToggleBtn = document.getElementById('sidebarToggleBtn');
+    const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+
+    if (staffShell) {
+        const MOBILE_BREAKPOINT = 768;
+
+        const setSidebarCollapsed = (collapsed) => {
+            staffShell.classList.toggle('sidebar-collapsed', collapsed);
+            if (sidebarBackdrop) {
+                const isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
+                sidebarBackdrop.classList.toggle('show', !collapsed && isMobile);
+            }
+        };
+
+        // Sidebar starts collapsed on small screens so it doesn't cover the content
+        setSidebarCollapsed(window.innerWidth <= MOBILE_BREAKPOINT);
+
+        if (sidebarToggleBtn) {
+            sidebarToggleBtn.addEventListener('click', () => {
+                const isCollapsed = staffShell.classList.contains('sidebar-collapsed');
+                setSidebarCollapsed(!isCollapsed);
+            });
+        }
+
+        if (sidebarBackdrop) {
+            sidebarBackdrop.addEventListener('click', () => setSidebarCollapsed(true));
+        }
+
+        // Re-evaluate default state on resize (desktop <-> mobile)
+        let lastWasMobile = window.innerWidth <= MOBILE_BREAKPOINT;
+        window.addEventListener('resize', () => {
+            const isMobile = window.innerWidth <= MOBILE_BREAKPOINT;
+            if (isMobile !== lastWasMobile) {
+                setSidebarCollapsed(isMobile);
+                lastWasMobile = isMobile;
+            }
+        });
+    }
+
+    // Sidebar search popover (moved from the top bar into the sidebar)
+    const sidebarSearchBtn = document.getElementById('sidebarSearchBtn');
+    const sidebarSearchPopover = document.getElementById('sidebarSearchPopover');
+    if (sidebarSearchBtn && sidebarSearchPopover) {
+        sidebarSearchBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            sidebarSearchPopover.classList.toggle('show');
+            if (sidebarSearchPopover.classList.contains('show')) {
+                const input = sidebarSearchPopover.querySelector('input');
+                if (input) input.focus();
+            }
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!sidebarSearchPopover.contains(e.target) && e.target !== sidebarSearchBtn) {
+                sidebarSearchPopover.classList.remove('show');
+            }
+        });
+
+        sidebarSearchPopover.addEventListener('click', (e) => e.stopPropagation());
+    }
+
     // Notification System Refactored
     function showNotification(message, type = 'info') {
         const notification = document.createElement('div');
