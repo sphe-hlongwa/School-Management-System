@@ -2859,9 +2859,18 @@ img {
         padding: 2.5rem 4% 1rem;
     }
 
+    /* Organise the footer into a tidy 2-column grid on mobile instead of one
+       long centered list: brand + newsletter span the full width, while
+       Quick Links and Portals sit side by side as left-aligned columns */
     .footer-content {
-        grid-template-columns: 1fr;
-        gap: 2rem;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem 1.5rem;
+        text-align: left;
+    }
+
+    .footer-section:nth-child(1),
+    .footer-section:nth-child(4) {
+        grid-column: 1 / -1;
         text-align: center;
     }
 
