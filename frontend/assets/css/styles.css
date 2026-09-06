@@ -1838,6 +1838,7 @@ img {
     box-shadow: var(--shadow);
     padding: 1.5rem 1.75rem;
     margin-bottom: 1.5rem;
+    min-width: 0;
 }
 
 .panel-header {
@@ -4285,6 +4286,7 @@ textarea:focus-visible {
 
 .chart-highlight-note .chn-values {
     display: flex;
+    flex-wrap: wrap;
     gap: 1.25rem;
 }
 
