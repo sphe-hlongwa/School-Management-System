@@ -2940,12 +2940,17 @@ img {
     }
 
     /* Extra polish for very small phones (<=480px) */
-    .stats-row,
+    .stats-row {
+        grid-template-columns: 1fr;
+    }
+
+    /* Keep Quick Links and the attendance summary in a 2-column grid even
+       on small phones, rather than collapsing to a single stacked column */
     .quick-links-grid,
     .quick-links-grid.cols-3,
     .attendance-summary,
     .attendance-summary.cols-3 {
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .mini-calendar-grid {
