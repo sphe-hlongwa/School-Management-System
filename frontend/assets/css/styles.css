@@ -2020,6 +2020,11 @@ img {
     margin-top: 1rem;
 }
 
+/* Variant used on the parent dashboard's meeting-attendance card */
+.attendance-summary.cols-3 {
+    grid-template-columns: repeat(3, 1fr);
+}
+
 .attendance-summary div strong {
     display: block;
     font-size: 1.2rem;
@@ -2630,7 +2635,8 @@ img {
         width: 100%;
     }
 
-    .attendance-summary {
+    .attendance-summary,
+    .attendance-summary.cols-3 {
         grid-template-columns: repeat(2, 1fr);
     }
 
@@ -2753,7 +2759,8 @@ img {
     .stats-row,
     .quick-links-grid,
     .quick-links-grid.cols-3,
-    .attendance-summary {
+    .attendance-summary,
+    .attendance-summary.cols-3 {
         grid-template-columns: 1fr;
     }
 
@@ -4183,6 +4190,11 @@ textarea:focus-visible {
     margin-bottom: 1.5rem;
 }
 
+/* Variant used on the parent dashboard's Assignments + Reports row */
+.parent-row-2.cols-even {
+    grid-template-columns: 1fr 1fr;
+}
+
 .parent-attendance-row {
     display: grid;
     grid-template-columns: 1.3fr 1fr;
@@ -4192,6 +4204,7 @@ textarea:focus-visible {
 /* Parent dashboard responsive */
 @media (max-width: 992px) {
     .parent-row-2,
+    .parent-row-2.cols-even,
     .report-columns {
         grid-template-columns: 1fr;
     }
